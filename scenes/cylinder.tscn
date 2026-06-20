@@ -1,0 +1,10 @@
+[gd_scene load_steps=3 format=3 uid="uid://1my70enthopy"]
+
+[ext_resource type="Texture2D" uid="uid://jwwhiebe6kwd" path="res://assets/cylinder.png" id="1_6e84v"]
+[ext_resource type="Script" uid="uid://h4svkjtajwpk" path="res://scenes/cylinder.gd" id="1_ysrxe"]
+
+[node name="Node2D" type="Node2D"]
+script = ExtResource("1_ysrxe")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_6e84v")
