@@ -14,6 +14,9 @@ config/name="Juniper Dev SERIOUS Jam"
 run/main_scene="res://scenes/game.tscn"
 config/features=PackedStringArray("4.4", "Mobile")
 config/icon="res://icon.svg"
+run/snap/snap_2d_vertices_to_pixel=false
+run/snap/snap_2d_transforms_to_pixel=true
+run/canvas_textures/default_texture_filter=0
 
 [display]
 

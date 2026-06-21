@@ -1,10 +1,61 @@
-[gd_scene load_steps=3 format=3 uid="uid://1my70enthopy"]
+[gd_scene load_steps=4 format=3 uid="uid://1my70enthopy"]
 
-[ext_resource type="Texture2D" uid="uid://jwwhiebe6kwd" path="res://assets/cylinder.png" id="1_6e84v"]
+[ext_resource type="Texture2D" uid="uid://0vp7s2cke2fj" path="res://assets/cylinder.png" id="1_6e84v"]
 [ext_resource type="Script" uid="uid://h4svkjtajwpk" path="res://scenes/cylinder.gd" id="1_ysrxe"]
+[ext_resource type="BitMap" uid="uid://dlk1kauno8tg" path="res://assets/buttonBitmap.png" id="4_whw68"]
 
-[node name="Node2D" type="Node2D"]
+[node name="Cylinder" type="Node2D"]
 script = ExtResource("1_ysrxe")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture = ExtResource("1_6e84v")
+
+[node name="Buttons" type="Node2D" parent="."]
+
+[node name="Button1" type="TextureButton" parent="Buttons"]
+offset_left = -12.0
+offset_top = -39.0
+offset_right = 12.0
+offset_bottom = -16.0
+texture_click_mask = ExtResource("4_whw68")
+metadata/num = 1
+
+[node name="Button2" type="TextureButton" parent="Buttons"]
+offset_left = 12.0
+offset_top = -26.0
+offset_right = 36.0
+offset_bottom = -3.0
+texture_click_mask = ExtResource("4_whw68")
+metadata/num = 2
+
+[node name="Button3" type="TextureButton" parent="Buttons"]
+offset_left = 12.0
+offset_top = 3.0
+offset_right = 36.0
+offset_bottom = 26.0
+texture_click_mask = ExtResource("4_whw68")
+metadata/num = 3
+
+[node name="Button4" type="TextureButton" parent="Buttons"]
+offset_left = -12.0
+offset_top = 16.0
+offset_right = 12.0
+offset_bottom = 39.0
+texture_click_mask = ExtResource("4_whw68")
+metadata/num = 4
+
+[node name="Button5" type="TextureButton" parent="Buttons"]
+offset_left = -36.0
+offset_top = 3.0
+offset_right = -12.0
+offset_bottom = 26.0
+texture_click_mask = ExtResource("4_whw68")
+metadata/num = 5
+
+[node name="Button6" type="TextureButton" parent="Buttons"]
+offset_left = -36.0
+offset_top = -26.0
+offset_right = -12.0
+offset_bottom = -3.0
+texture_click_mask = ExtResource("4_whw68")
+metadata/num = 6
