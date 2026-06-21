@@ -1,0 +1,50 @@
+[gd_scene load_steps=9 format=3 uid="uid://bacjksc1aolhn"]
+
+[ext_resource type="Script" uid="uid://dina3vi7det00" path="res://scenes/dynamic_cylinder/dynamic_cylinder.gd" id="1_ktc2e"]
+[ext_resource type="Shader" uid="uid://dfn5qp78o2vql" path="res://scenes/dynamic_cylinder/dynamic_cylinder.gdshader" id="2_bk17g"]
+
+[sub_resource type="Gradient" id="Gradient_hrwxu"]
+interpolation_mode = 1
+colors = PackedColorArray(1, 1, 1, 1, 0, 0, 0, 0)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_4kpuc"]
+gradient = SubResource("Gradient_hrwxu")
+width = 203
+height = 203
+fill = 1
+fill_from = Vector2(0.5, 0.5)
+fill_to = Vector2(0.5, 0)
+
+[sub_resource type="Gradient" id="Gradient_ussvn"]
+interpolation_mode = 1
+colors = PackedColorArray(0, 0, 0, 1, 0, 0, 0, 0)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_ff8oq"]
+gradient = SubResource("Gradient_ussvn")
+width = 150
+height = 150
+fill = 1
+fill_from = Vector2(0.5, 0.5)
+fill_to = Vector2(0.5, 0)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_hrwxu"]
+gradient = SubResource("Gradient_ussvn")
+width = 50
+height = 50
+fill = 1
+fill_from = Vector2(0.5, 0.5)
+fill_to = Vector2(0.5, 0)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_ff8oq"]
+shader = ExtResource("2_bk17g")
+
+[node name="DynamicCylinder" type="Node2D"]
+
+[node name="Node2D" type="Node2D" parent="."]
+script = ExtResource("1_ktc2e")
+cylinder_tex = SubResource("GradientTexture2D_4kpuc")
+divit_tex = SubResource("GradientTexture2D_ff8oq")
+slot_tex = SubResource("GradientTexture2D_hrwxu")
+
+[node name="CanvasGroup" type="CanvasGroup" parent="Node2D"]
+material = SubResource("ShaderMaterial_ff8oq")
