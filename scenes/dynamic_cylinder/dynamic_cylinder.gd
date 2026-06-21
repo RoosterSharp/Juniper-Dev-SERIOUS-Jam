@@ -33,8 +33,8 @@ func _update():
 	
 	var radius = ((SLOT_WIDTH*num_slots/PI)+SLOT_WIDTH)/2
 	
-	cylinder_tex.height = radius*2
-	cylinder_tex.width = radius*2
+	cylinder_tex.height = int(radius)*2
+	cylinder_tex.width = int(radius)*2
 	
 	var cylinder_spr = Sprite2D.new()
 	cylinder_spr.texture = cylinder_tex
