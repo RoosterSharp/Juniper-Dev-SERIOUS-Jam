@@ -1,14 +1,17 @@
 @tool
 extends Node2D
 
+signal button_pressed(idx : int)
+
+const CHAMBER_BUTTON = preload("res://scenes/dynamic_cylinder/chamber_button.tscn")
 const DIVIT_DIST = 65
 const SLOT_DIST = -40
 const SLOT_WIDTH = 70
 
 @export var num_slots := 6:
 	set(value):
+		num_slots = max(value,6)
 		if Engine.is_editor_hint():
-			num_slots = max(value,6)
 			_update()
 @export var cylinder_tex : GradientTexture2D
 @export var divit_tex : Texture2D
@@ -38,10 +41,13 @@ func _update():
 	canvas_group.add_child(cylinder_spr)
 	for slot_idx in num_slots:
 		
-		var new_slot = Sprite2D.new()
+		var new_slot : ChamberButton = CHAMBER_BUTTON.instantiate()
 		canvas_group.add_child(new_slot)
-		new_slot.texture = slot_tex
 		new_slot.position = Vector2.UP.rotated(2*PI/num_slots*slot_idx)*(radius+SLOT_DIST)
+		
+		if !Engine.is_editor_hint():
+			new_slot.button_idx = slot_idx
+			new_slot.button_pressed.connect(func(i): button_pressed.emit(i))
 		
 		var new_divit = Sprite2D.new()
 		canvas_group.add_child(new_divit)
