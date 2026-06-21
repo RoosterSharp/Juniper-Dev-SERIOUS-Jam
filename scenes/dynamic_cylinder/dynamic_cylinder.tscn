@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://bacjksc1aolhn"]
+[gd_scene load_steps=9 format=3 uid="uid://got47o82fs4c"]
 
 [ext_resource type="Script" uid="uid://dina3vi7det00" path="res://scenes/dynamic_cylinder/dynamic_cylinder.gd" id="1_ktc2e"]
 [ext_resource type="Shader" uid="uid://dfn5qp78o2vql" path="res://scenes/dynamic_cylinder/dynamic_cylinder.gdshader" id="2_bk17g"]
@@ -39,12 +39,10 @@ fill_to = Vector2(0.5, 0)
 shader = ExtResource("2_bk17g")
 
 [node name="DynamicCylinder" type="Node2D"]
-
-[node name="Node2D" type="Node2D" parent="."]
 script = ExtResource("1_ktc2e")
 cylinder_tex = SubResource("GradientTexture2D_4kpuc")
 divit_tex = SubResource("GradientTexture2D_ff8oq")
 slot_tex = SubResource("GradientTexture2D_hrwxu")
 
-[node name="CanvasGroup" type="CanvasGroup" parent="Node2D"]
+[node name="CanvasGroup" type="CanvasGroup" parent="."]
 material = SubResource("ShaderMaterial_ff8oq")
