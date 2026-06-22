@@ -3,7 +3,7 @@ extends Node2D
 
 signal button_pressed
 
-@onready var texture_button: TextureButton = $TextureButton
+@onready var texture_button: TextureButton = $Node/Node2D/TextureButton
 
 var button_idx := 0
 

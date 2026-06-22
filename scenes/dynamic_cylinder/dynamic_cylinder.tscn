@@ -1,18 +1,17 @@
-[gd_scene load_steps=10 format=3 uid="uid://got47o82fs4c"]
+[gd_scene load_steps=14 format=3 uid="uid://got47o82fs4c"]
 
 [ext_resource type="Script" uid="uid://dina3vi7det00" path="res://scenes/dynamic_cylinder/dynamic_cylinder.gd" id="1_ktc2e"]
 [ext_resource type="Shader" uid="uid://dfn5qp78o2vql" path="res://scenes/dynamic_cylinder/dynamic_cylinder.gdshader" id="2_bk17g"]
+[ext_resource type="BitMap" uid="uid://dlk1kauno8tg" path="res://assets/buttonBitmap.png" id="3_bk17g"]
 
 [sub_resource type="Gradient" id="Gradient_hrwxu"]
 interpolation_mode = 1
-offsets = PackedFloat32Array(0, 0.24026, 1)
-colors = PackedColorArray(0, 0, 0, 1, 0.34902, 0.34902, 0.34902, 1, 0, 0, 0, 0)
+colors = PackedColorArray(0.34902, 0.34902, 0.34902, 1, 0, 0, 0, 0)
 
 [sub_resource type="GradientTexture2D" id="GradientTexture2D_4kpuc"]
-resource_local_to_scene = true
 gradient = SubResource("Gradient_hrwxu")
-width = 202
-height = 202
+width = 1000
+height = 1000
 fill = 1
 fill_from = Vector2(0.5, 0.5)
 fill_to = Vector2(0.5, 0)
@@ -42,9 +41,30 @@ fill = 1
 fill_from = Vector2(0.5, 0.5)
 fill_to = Vector2(0.5, 0)
 
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_xfxon"]
+resource_local_to_scene = true
+gradient = SubResource("Gradient_hrwxu")
+width = 1000
+height = 1000
+fill = 1
+fill_from = Vector2(0.5, 0.5)
+fill_to = Vector2(0.5, 0)
+
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_ff8oq"]
 shader = ExtResource("2_bk17g")
 shader_parameter/outline_color = Color(0, 0, 0, 1)
+
+[sub_resource type="Gradient" id="Gradient_bk17g"]
+interpolation_mode = 1
+colors = PackedColorArray(0, 0, 0, 1, 1, 1, 1, 0)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_ip2u4"]
+gradient = SubResource("Gradient_bk17g")
+width = 50
+height = 50
+fill = 1
+fill_from = Vector2(0.5, 0.5)
+fill_to = Vector2(0.5, 0)
 
 [node name="DynamicCylinder" type="Node2D"]
 script = ExtResource("1_ktc2e")
@@ -52,5 +72,29 @@ cylinder_tex = SubResource("GradientTexture2D_4kpuc")
 divit_tex = SubResource("GradientTexture2D_ff8oq")
 back_tex = SubResource("GradientTexture2D_bk17g")
 
+[node name="BarrelButton" type="Node2D" parent="."]
+scale = Vector2(0.224059, 0.224059)
+
+[node name="BarrelButton" type="TextureButton" parent="BarrelButton"]
+modulate = Color(0.701961, 0.701961, 0.701961, 0)
+offset_left = -500.0
+offset_top = -500.0
+offset_right = 500.0
+offset_bottom = 500.0
+texture_normal = SubResource("GradientTexture2D_xfxon")
+texture_click_mask = ExtResource("3_bk17g")
+
 [node name="CanvasGroup" type="CanvasGroup" parent="."]
 material = SubResource("ShaderMaterial_ff8oq")
+
+[node name="Node" type="Node" parent="."]
+
+[node name="Sprite2D" type="Sprite2D" parent="Node"]
+texture = SubResource("GradientTexture2D_ip2u4")
+
+[node name="RemoteTransform2D" type="RemoteTransform2D" parent="."]
+remote_path = NodePath("../Node/Sprite2D")
+update_rotation = false
+
+[connection signal="button_down" from="BarrelButton/BarrelButton" to="." method="_grab"]
+[connection signal="button_up" from="BarrelButton/BarrelButton" to="." method="_release"]
