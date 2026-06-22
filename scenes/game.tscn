@@ -1,48 +1,12 @@
-[gd_scene load_steps=8 format=3 uid="uid://5nev65ygcq66"]
+[gd_scene load_steps=6 format=3 uid="uid://5nev65ygcq66"]
 
 [ext_resource type="Texture2D" uid="uid://daxq2pw8ooofd" path="res://assets/background.jpg" id="1_lbhrr"]
-[ext_resource type="PackedScene" uid="uid://got47o82fs4c" path="res://scenes/dynamic_cylinder/dynamic_cylinder.tscn" id="4_lbhrr"]
+[ext_resource type="Script" uid="uid://b8e0lof3gnqpv" path="res://scenes/character/cylinder.gd" id="2_lbhrr"]
+[ext_resource type="PackedScene" uid="uid://72sb1sarxgr" path="res://scenes/dynamic_cylinder/height_aligned_barrel.tscn" id="2_lnu2h"]
 [ext_resource type="PackedScene" uid="uid://c8xkn0uh03ynm" path="res://scenes/character/character.tscn" id="5_iywne"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_yqjtg"]
 size = Vector2(320, 180)
-
-[sub_resource type="Animation" id="Animation_lnu2h"]
-length = 2.0
-
-[sub_resource type="Animation" id="Animation_yqjtg"]
-resource_name = "cylinder_roll"
-step = 0.0166667
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("DynamicCylinder:position")
-tracks/0/interp = 2
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0.166667, 0.4, 0.5),
-"transitions": PackedFloat32Array(1, 1, 1),
-"update": 0,
-"values": [Vector2(90, 0), Vector2(-90, 0), Vector2(-78, 0)]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("DynamicCylinder:rotation")
-tracks/1/interp = 2
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0.166667, 0.516667, 0.933333, 1),
-"transitions": PackedFloat32Array(1, 1, 1, 1),
-"update": 0,
-"values": [0.0, -6.28319, -12.7409, -12.5664]
-}
-
-[sub_resource type="AnimationLibrary" id="AnimationLibrary_lbhrr"]
-_data = {
-&"RESET": SubResource("Animation_lnu2h"),
-&"cylinder_roll": SubResource("Animation_yqjtg")
-}
 
 [node name="Node2D" type="Node2D"]
 
@@ -56,16 +20,29 @@ shape = SubResource("RectangleShape2D_yqjtg")
 disabled = true
 debug_color = Color(0, 0.643137, 0.294118, 0.054902)
 
-[node name="DynamicCylinder" parent="." instance=ExtResource("4_lbhrr")]
-position = Vector2(102, 38)
+[node name="BarrelManager" type="Node2D" parent="."]
+script = ExtResource("2_lbhrr")
+
+[node name="HeightAlignedBarrel" parent="BarrelManager" instance=ExtResource("2_lnu2h")]
 
 [node name="Camera2D" type="Camera2D" parent="."]
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
-libraries = {
-&"": SubResource("AnimationLibrary_lbhrr")
-}
-autoplay = "cylinder_roll"
-
 [node name="Character" parent="." instance=ExtResource("5_iywne")]
 position = Vector2(-97, -2)
+
+[node name="Button" type="Button" parent="."]
+offset_left = 79.0
+offset_top = 35.0
+offset_right = 156.0
+offset_bottom = 57.0
+text = "shoot"
+
+[node name="Button2" type="Button" parent="."]
+offset_left = 77.0
+offset_top = -23.0
+offset_right = 154.0
+offset_bottom = 8.0
+text = "fill"
+
+[connection signal="button_down" from="Button" to="BarrelManager" method="shoot"]
+[connection signal="button_down" from="Button2" to="BarrelManager" method="fill_cylinder"]

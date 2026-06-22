@@ -1,0 +1,22 @@
+[gd_resource type="Resource" script_class="Bullet" load_steps=7 format=3 uid="uid://bwiarpt5nmh82"]
+
+[ext_resource type="Script" uid="uid://bswb22uloxwgq" path="res://scenes/bullet/bullet.gd" id="1_l61vl"]
+[ext_resource type="Script" uid="uid://yvf416wo0lny" path="res://scenes/bullet/bullet_effect.gd" id="1_m04t0"]
+[ext_resource type="Script" uid="uid://231qk3vaa3mq" path="res://scenes/bullet/be_damage.gd" id="2_oxg2q"]
+
+[sub_resource type="Resource" id="Resource_m04t0"]
+script = ExtResource("2_oxg2q")
+amount = 5
+metadata/_custom_type_script = "uid://231qk3vaa3mq"
+
+[sub_resource type="Gradient" id="Gradient_m04t0"]
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_oxg2q"]
+gradient = SubResource("Gradient_m04t0")
+
+[resource]
+script = ExtResource("1_l61vl")
+type = &"normal"
+texture = SubResource("GradientTexture2D_oxg2q")
+effects = Array[ExtResource("1_m04t0")]([SubResource("Resource_m04t0")])
+metadata/_custom_type_script = "uid://bswb22uloxwgq"
