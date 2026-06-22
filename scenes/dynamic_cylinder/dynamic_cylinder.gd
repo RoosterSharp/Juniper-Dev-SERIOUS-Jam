@@ -6,9 +6,9 @@ signal button_pressed(idx : int)
 
 const BARREL_SIZE = 1000
 const CHAMBER_BUTTON = preload("res://scenes/dynamic_cylinder/chamber_button.tscn")
-const DIVIT_DIST = 65
-const SLOT_DIST = -40
-const SLOT_WIDTH = 70
+const DIVIT_DIST = 32
+const SLOT_DIST = -20
+const SLOT_WIDTH = 35
 
 @export var num_slots := 6:
 	set(value):

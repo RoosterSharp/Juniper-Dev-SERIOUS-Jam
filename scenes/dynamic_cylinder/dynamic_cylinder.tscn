@@ -22,8 +22,8 @@ colors = PackedColorArray(1, 0, 0, 1, 0, 0, 0, 0)
 
 [sub_resource type="GradientTexture2D" id="GradientTexture2D_ff8oq"]
 gradient = SubResource("Gradient_ussvn")
-width = 150
-height = 150
+width = 75
+height = 75
 fill = 1
 fill_from = Vector2(0.5, 0.5)
 fill_to = Vector2(0.5, 0)
@@ -47,8 +47,8 @@ colors = PackedColorArray(0, 0, 0, 1, 1, 1, 1, 0)
 
 [sub_resource type="GradientTexture2D" id="GradientTexture2D_ip2u4"]
 gradient = SubResource("Gradient_bk17g")
-width = 50
-height = 50
+width = 24
+height = 24
 fill = 1
 fill_from = Vector2(0.5, 0.5)
 fill_to = Vector2(0.5, 0)
@@ -59,7 +59,7 @@ cylinder_tex = SubResource("GradientTexture2D_4kpuc")
 divit_tex = SubResource("GradientTexture2D_ff8oq")
 
 [node name="BarrelButton" type="Node2D" parent="."]
-scale = Vector2(0.224059, 0.224059)
+scale = Vector2(0.11203, 0.11203)
 
 [node name="BarrelButton" type="TextureButton" parent="BarrelButton"]
 modulate = Color(0.701961, 0.701961, 0.701961, 0)
