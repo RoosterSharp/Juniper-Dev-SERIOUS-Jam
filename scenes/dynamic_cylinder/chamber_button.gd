@@ -4,6 +4,7 @@ extends Node2D
 signal button_pressed
 
 @onready var texture_button: TextureButton = $Node/Node2D/TextureButton
+@onready var sprite_2d: Sprite2D = $Node/Node2D/Sprite2D
 
 var button_idx := 0
 
@@ -17,8 +18,8 @@ func _button_down():
 func _chamber_updated(idx, bullet):
 	if button_idx != idx:
 		return
-	print("test")
+		
 	if bullet:
-		texture_button.texture_normal = bullet.texture
+		sprite_2d.texture = bullet.texture
 	else:
-		texture_button.texture_normal = null
+		sprite_2d.texture = null

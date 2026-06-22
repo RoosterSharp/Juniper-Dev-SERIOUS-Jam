@@ -15,7 +15,9 @@ func _init() -> void:
 
 func _ready() -> void:
 	bullets.resize(DynamicCylinder.get_instance().num_slots)
-	bullets.fill(EMPTY)
+	for i in bullets.size():
+		set_chamber(i, EMPTY)
+	
 
 static func get_instance() -> Cylinder:
 	return _node
@@ -38,7 +40,7 @@ func fill_cylinder():
 	return new_arr
 
 func rand_bullet() -> Bullet:
-	return preload("res://bullets/normal.tres")
+	return preload("res://bullets/basic.tres")
 
 func set_chamber(idx : int, bullet : Bullet):
 	bullets[idx] = bullet
