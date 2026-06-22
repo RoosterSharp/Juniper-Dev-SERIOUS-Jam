@@ -1,4 +1,5 @@
 @tool
+class_name DynamicCylinder
 extends Node2D
 
 signal button_pressed(idx : int)
@@ -54,7 +55,7 @@ func _update():
 	for child in canvas_group.get_children():
 		child.queue_free()
 	
-	var radius = ((SLOT_WIDTH*num_slots/PI)+SLOT_WIDTH)/2
+	var radius = get_radius()
 	
 	var cylinder_spr = Sprite2D.new()
 	cylinder_spr.texture = cylinder_tex
@@ -79,6 +80,9 @@ func _update():
 		
 		var slot_width = 2*PI/num_slots
 		new_divit.position = Vector2.UP.rotated(2*PI/num_slots*slot_idx+slot_width/2)*(radius+DIVIT_DIST)
+
+func get_radius():
+	return ((SLOT_WIDTH*num_slots/PI)+SLOT_WIDTH)/2
 
 func _grab():
 	grabbed = true
