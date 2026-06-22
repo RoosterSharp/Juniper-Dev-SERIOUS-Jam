@@ -16,6 +16,7 @@ const SLOT_WIDTH = 70
 @export var cylinder_tex : GradientTexture2D
 @export var divit_tex : Texture2D
 @export var slot_tex : Texture2D
+@export var back_tex : Texture2D
 
 
 @onready var canvas_group: CanvasGroup = $CanvasGroup
@@ -32,6 +33,16 @@ func _update():
 		child.queue_free()
 	
 	var radius = ((SLOT_WIDTH*num_slots/PI)+SLOT_WIDTH)/2
+	print(radius)
+	
+	# cylinder background
+	# needs to not be affected by divit normals somehow
+	var back_circle = Sprite2D.new()
+	back_tex.height = radius*2.5
+	back_tex.width = radius*2.5
+	back_circle.texture = back_tex
+	canvas_group.add_child(back_circle)
+	
 	
 	cylinder_tex.height = int(radius)*2
 	cylinder_tex.width = int(radius)*2
