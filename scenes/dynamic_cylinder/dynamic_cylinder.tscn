@@ -5,7 +5,7 @@
 
 [sub_resource type="Gradient" id="Gradient_hrwxu"]
 interpolation_mode = 1
-offsets = PackedFloat32Array(0, 0.221198, 1)
+offsets = PackedFloat32Array(0, 0.24026, 1)
 colors = PackedColorArray(0, 0, 0, 1, 0.34902, 0.34902, 0.34902, 1, 0, 0, 0, 0)
 
 [sub_resource type="GradientTexture2D" id="GradientTexture2D_4kpuc"]
@@ -19,8 +19,7 @@ fill_to = Vector2(0.5, 0)
 
 [sub_resource type="Gradient" id="Gradient_ussvn"]
 interpolation_mode = 1
-offsets = PackedFloat32Array(0, 0.00921659, 1)
-colors = PackedColorArray(0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0, 0)
+colors = PackedColorArray(1, 0, 0, 1, 0, 0, 0, 0)
 
 [sub_resource type="GradientTexture2D" id="GradientTexture2D_ff8oq"]
 gradient = SubResource("Gradient_ussvn")
@@ -45,9 +44,9 @@ fill_to = Vector2(0.5, 0)
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_ff8oq"]
 shader = ExtResource("2_bk17g")
+shader_parameter/outline_color = Color(0, 0, 0, 1)
 
 [node name="DynamicCylinder" type="Node2D"]
-position = Vector2(0.5, 0.5)
 script = ExtResource("1_ktc2e")
 cylinder_tex = SubResource("GradientTexture2D_4kpuc")
 divit_tex = SubResource("GradientTexture2D_ff8oq")
