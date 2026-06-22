@@ -1,10 +1,10 @@
 extends Resource
 class_name Bullet
 
-@export var type : String
-@export var colour : String #hex code
-@export var damage := 5
-@export var healing := 0
+@export var type : StringName
+@export var texture : Texture2D
+@export var effects : Array[BulletEffect]
 
-func shoot_bullet() -> int:
-	return -damage+healing
+func fire():
+	for effect in effects:
+		await effect.apply()

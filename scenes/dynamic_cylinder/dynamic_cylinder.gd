@@ -10,6 +10,9 @@ const DIVIT_DIST = 32
 const SLOT_DIST = -20
 const SLOT_WIDTH = 35
 
+static var _node : DynamicCylinder
+var selected_chamber = 0
+
 @export var num_slots := 6:
 	set(value):
 		num_slots = max(value,6)
@@ -30,10 +33,13 @@ var mouse_warped = false
 func _ready() -> void:
 	set_num_slots(num_slots)
 
+func _init():
+	_node = self
+
 func _input(event: InputEvent) -> void:
 	if !grabbed:
 		return
-	print("test")
+		
 	if event is InputEventMouseMotion: 
 		if !mouse_warped:
 			var screen_pos = get_global_transform_with_canvas().origin
@@ -46,6 +52,9 @@ func _input(event: InputEvent) -> void:
 			rotation = curr_angle - grab_angle
 		else:
 			mouse_warped = false
+
+static func get_instance() -> DynamicCylinder:
+	return _node
 
 func set_num_slots(num):
 	num_slots = max(num,6)
@@ -93,6 +102,8 @@ func _grab():
 
 func _release():
 	grabbed = false
+	selected_chamber = wrap(roundf(-rotation/(2.0*PI)*num_slots),0,num_slots)
+	print(selected_chamber)
 	snap()
 
 func snap():
