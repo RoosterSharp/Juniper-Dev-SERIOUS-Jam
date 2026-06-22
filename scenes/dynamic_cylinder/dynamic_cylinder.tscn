@@ -6,7 +6,7 @@
 
 [sub_resource type="Gradient" id="Gradient_hrwxu"]
 interpolation_mode = 1
-colors = PackedColorArray(0.34902, 0.34902, 0.34902, 1, 0, 0, 0, 0)
+colors = PackedColorArray(1, 1, 1, 1, 0, 0, 0, 0)
 
 [sub_resource type="GradientTexture2D" id="GradientTexture2D_4kpuc"]
 gradient = SubResource("Gradient_hrwxu")
@@ -18,7 +18,7 @@ fill_to = Vector2(0.5, 0)
 
 [sub_resource type="Gradient" id="Gradient_ussvn"]
 interpolation_mode = 1
-colors = PackedColorArray(1, 0, 0, 1, 0, 0, 0, 0)
+colors = PackedColorArray(0, 0, 0, 1, 0, 0, 0, 0)
 
 [sub_resource type="GradientTexture2D" id="GradientTexture2D_ff8oq"]
 gradient = SubResource("Gradient_ussvn")

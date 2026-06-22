@@ -1,4 +1,4 @@
-[gd_scene load_steps=6 format=3 uid="uid://5nev65ygcq66"]
+[gd_scene load_steps=7 format=3 uid="uid://5nev65ygcq66"]
 
 [ext_resource type="Texture2D" uid="uid://daxq2pw8ooofd" path="res://assets/background.jpg" id="1_lbhrr"]
 [ext_resource type="Script" uid="uid://b8e0lof3gnqpv" path="res://scenes/character/cylinder.gd" id="2_lbhrr"]
@@ -7,6 +7,10 @@
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_yqjtg"]
 size = Vector2(320, 180)
+
+[sub_resource type="Gradient" id="Gradient_lbhrr"]
+offsets = PackedFloat32Array(0.298387, 0.5, 0.674731, 0.736559, 0.895161)
+colors = PackedColorArray(0.242392, 0.76738, 0.86098, 1, 0.507813, 0.507813, 0.507813, 1, 1, 0.4383, 0.213868, 1, 0.370811, 0.365812, 1, 1, 0.67643, 0.785002, 1, 1)
 
 [node name="Node2D" type="Node2D"]
 
@@ -22,6 +26,7 @@ debug_color = Color(0, 0.643137, 0.294118, 0.054902)
 
 [node name="BarrelManager" type="Node2D" parent="."]
 script = ExtResource("2_lbhrr")
+heat_color_ramp = SubResource("Gradient_lbhrr")
 
 [node name="HeightAlignedBarrel" parent="BarrelManager" instance=ExtResource("2_lnu2h")]
 

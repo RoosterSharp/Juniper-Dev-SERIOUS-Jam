@@ -7,8 +7,9 @@ const EMPTY = preload("res://bullets/empty.tres")
 
 static var _node
 
-var char_ref
+@export var heat_color_ramp : Gradient
 
+var char_ref
 var bullets : Array[Bullet]
 
 
@@ -20,6 +21,9 @@ func _ready() -> void:
 	for i in bullets.size():
 		set_chamber(i, EMPTY)
 	char_ref = Character.get_instance()
+
+func _process(delta: float) -> void:
+	disp_heat()
 
 static func get_instance() -> Cylinder:
 	return _node
@@ -40,7 +44,7 @@ func shoot():
 		char_ref.heat += 20
 	else:
 		char_ref.heat = 100.0
-	disp_heat()
+
 	char_ref.shot_time = 0
 
 func fill_cylinder():
@@ -54,10 +58,12 @@ func fill_cylinder():
 
 func disp_heat():
 	var cyl_image = DynamicCylinder.get_instance()
-	var heat_col = 1-char_ref.heat/100 #gets a percentage value of heat level
+	var heat_col = char_ref.heat/100.0 #gets a percentage value of heat level
 	if heat_col < 0:
 		heat_col = 0
-	cyl_image.set_modulate(Color(1,heat_col,heat_col))
+	#cyl_image.set_modulate(Color(1,heat_col,heat_col))
+	cyl_image.set_modulate(heat_color_ramp.sample(0.5+heat_col*0.5))
+	
 
 func rand_bullet() -> Bullet:
 	return preload("res://bullets/basic.tres")

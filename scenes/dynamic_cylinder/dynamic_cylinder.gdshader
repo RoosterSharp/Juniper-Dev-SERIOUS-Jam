@@ -10,7 +10,7 @@ vec4 get_color(vec2 screen_uv){
 	c.rgb /= c.a;
 	}
 	
-	if (c == vec4(1,0,0,1)){
+	if (c == vec4(0,0,0,1)){
 		c = vec4(0,0,0,0);
 	}
 	

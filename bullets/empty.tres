@@ -19,5 +19,6 @@ fill_to = Vector2(0.5, 0)
 script = ExtResource("2_l5jb1")
 type = &"empty"
 texture = SubResource("GradientTexture2D_lbqou")
+heat = 0.0
 effects = Array[ExtResource("1_kf41r")]([])
 metadata/_custom_type_script = "uid://bswb22uloxwgq"
