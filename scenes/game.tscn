@@ -1,9 +1,8 @@
-[gd_scene load_steps=13 format=3 uid="uid://5nev65ygcq66"]
+[gd_scene load_steps=10 format=3 uid="uid://5nev65ygcq66"]
 
 [ext_resource type="Texture2D" uid="uid://daxq2pw8ooofd" path="res://assets/background.jpg" id="1_lbhrr"]
-[ext_resource type="Texture2D" uid="uid://cyuyuaoyc4nb3" path="res://assets/shooter.png" id="1_yqjtg"]
-[ext_resource type="Texture2D" uid="uid://bqvpuj2dsa317" path="res://assets/gun.png" id="3_lnu2h"]
 [ext_resource type="PackedScene" uid="uid://got47o82fs4c" path="res://scenes/dynamic_cylinder/dynamic_cylinder.tscn" id="4_lbhrr"]
+[ext_resource type="PackedScene" uid="uid://c8xkn0uh03ynm" path="res://scenes/character/character.tscn" id="5_iywne"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_yqjtg"]
 size = Vector2(320, 180)
@@ -18,19 +17,6 @@ resource_local_to_scene = true
 gradient = SubResource("Gradient_hrwxu")
 width = 202
 height = 202
-fill = 1
-fill_from = Vector2(0.5, 0.5)
-fill_to = Vector2(0.5, 0)
-
-[sub_resource type="Gradient" id="Gradient_ktc2e"]
-interpolation_mode = 1
-colors = PackedColorArray(1, 0, 0, 1, 1, 1, 1, 0)
-
-[sub_resource type="GradientTexture2D" id="GradientTexture2D_iywne"]
-resource_local_to_scene = true
-gradient = SubResource("Gradient_ktc2e")
-width = 254
-height = 254
 fill = 1
 fill_from = Vector2(0.5, 0.5)
 fill_to = Vector2(0.5, 0)
@@ -84,19 +70,10 @@ shape = SubResource("RectangleShape2D_yqjtg")
 disabled = true
 debug_color = Color(0, 0.643137, 0.294118, 0.054902)
 
-[node name="Shooter" type="Sprite2D" parent="."]
-position = Vector2(103, 66)
-texture = ExtResource("1_yqjtg")
-
 [node name="DynamicCylinder" parent="." instance=ExtResource("4_lbhrr")]
-position = Vector2(90, 0)
+position = Vector2(102, 38)
 scale = Vector2(0.425, 0.425)
 cylinder_tex = SubResource("GradientTexture2D_lbhrr")
-back_tex = SubResource("GradientTexture2D_iywne")
-
-[node name="Gun" type="Sprite2D" parent="."]
-position = Vector2(103, 66)
-texture = ExtResource("3_lnu2h")
 
 [node name="Camera2D" type="Camera2D" parent="."]
 
@@ -105,3 +82,6 @@ libraries = {
 &"": SubResource("AnimationLibrary_lbhrr")
 }
 autoplay = "cylinder_roll"
+
+[node name="Character" parent="." instance=ExtResource("5_iywne")]
+position = Vector2(-97, -2)
