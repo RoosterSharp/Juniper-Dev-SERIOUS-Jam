@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://5nev65ygcq66"]
+[gd_scene load_steps=8 format=3 uid="uid://5nev65ygcq66"]
 
 [ext_resource type="Texture2D" uid="uid://daxq2pw8ooofd" path="res://assets/background.jpg" id="1_lbhrr"]
 [ext_resource type="PackedScene" uid="uid://got47o82fs4c" path="res://scenes/dynamic_cylinder/dynamic_cylinder.tscn" id="4_lbhrr"]
@@ -6,20 +6,6 @@
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_yqjtg"]
 size = Vector2(320, 180)
-
-[sub_resource type="Gradient" id="Gradient_hrwxu"]
-interpolation_mode = 1
-offsets = PackedFloat32Array(0, 0.221198, 1)
-colors = PackedColorArray(0, 0, 0, 1, 0.34902, 0.34902, 0.34902, 1, 0, 0, 0, 0)
-
-[sub_resource type="GradientTexture2D" id="GradientTexture2D_lbhrr"]
-resource_local_to_scene = true
-gradient = SubResource("Gradient_hrwxu")
-width = 202
-height = 202
-fill = 1
-fill_from = Vector2(0.5, 0.5)
-fill_to = Vector2(0.5, 0)
 
 [sub_resource type="Animation" id="Animation_lnu2h"]
 length = 2.0
@@ -73,7 +59,6 @@ debug_color = Color(0, 0.643137, 0.294118, 0.054902)
 [node name="DynamicCylinder" parent="." instance=ExtResource("4_lbhrr")]
 position = Vector2(102, 38)
 scale = Vector2(0.425, 0.425)
-cylinder_tex = SubResource("GradientTexture2D_lbhrr")
 
 [node name="Camera2D" type="Camera2D" parent="."]
 
