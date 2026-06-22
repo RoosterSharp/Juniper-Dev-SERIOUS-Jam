@@ -103,7 +103,6 @@ func _grab():
 func _release():
 	grabbed = false
 	selected_chamber = wrap(roundf(-rotation/(2.0*PI)*num_slots),0,num_slots)
-	print(selected_chamber)
 	snap()
 
 func snap():
