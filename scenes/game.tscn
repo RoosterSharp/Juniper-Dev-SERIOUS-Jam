@@ -1,12 +1,9 @@
-[gd_scene load_steps=7 format=3 uid="uid://5nev65ygcq66"]
+[gd_scene load_steps=6 format=3 uid="uid://5nev65ygcq66"]
 
 [ext_resource type="Texture2D" uid="uid://daxq2pw8ooofd" path="res://assets/background.jpg" id="1_lbhrr"]
 [ext_resource type="Script" uid="uid://b8e0lof3gnqpv" path="res://scenes/character/cylinder.gd" id="2_lbhrr"]
 [ext_resource type="PackedScene" uid="uid://72sb1sarxgr" path="res://scenes/dynamic_cylinder/height_aligned_barrel.tscn" id="2_lnu2h"]
 [ext_resource type="PackedScene" uid="uid://c8xkn0uh03ynm" path="res://scenes/character/character.tscn" id="5_iywne"]
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_yqjtg"]
-size = Vector2(320, 180)
 
 [sub_resource type="Gradient" id="Gradient_lbhrr"]
 offsets = PackedFloat32Array(0.298387, 0.5, 0.736559, 0.887097, 1)
@@ -15,38 +12,32 @@ colors = PackedColorArray(0.242392, 0.76738, 0.86098, 1, 0.507813, 0.507813, 0.5
 [node name="Node2D" type="Node2D"]
 
 [node name="Background" type="Sprite2D" parent="."]
-position = Vector2(-5, -13)
+position = Vector2(155.438, 76.6252)
 scale = Vector2(0.299063, 0.299063)
 texture = ExtResource("1_lbhrr")
 
-[node name="ScreenSize" type="CollisionShape2D" parent="."]
-shape = SubResource("RectangleShape2D_yqjtg")
-disabled = true
-debug_color = Color(0, 0.643137, 0.294118, 0.054902)
-
 [node name="BarrelManager" type="Node2D" parent="."]
+position = Vector2(160.438, 89.6252)
 script = ExtResource("2_lbhrr")
 heat_color_ramp = SubResource("Gradient_lbhrr")
 
 [node name="HeightAlignedBarrel" parent="BarrelManager" instance=ExtResource("2_lnu2h")]
 
-[node name="Camera2D" type="Camera2D" parent="."]
-
 [node name="Character" parent="." instance=ExtResource("5_iywne")]
-position = Vector2(-97, -2)
+position = Vector2(63.4378, 87.6252)
 
 [node name="Button" type="Button" parent="."]
-offset_left = 79.0
-offset_top = 35.0
-offset_right = 156.0
-offset_bottom = 57.0
+offset_left = 239.438
+offset_top = 124.625
+offset_right = 316.438
+offset_bottom = 155.625
 text = "shoot"
 
 [node name="Button2" type="Button" parent="."]
-offset_left = 77.0
-offset_top = -23.0
-offset_right = 154.0
-offset_bottom = 8.0
+offset_left = 237.438
+offset_top = 66.6252
+offset_right = 314.438
+offset_bottom = 97.6252
 text = "fill"
 
 [connection signal="button_down" from="Button" to="BarrelManager" method="shoot"]
