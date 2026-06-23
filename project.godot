@@ -20,9 +20,10 @@ run/canvas_textures/default_texture_filter=0
 
 [display]
 
-window/size/viewport_width=320
-window/size/viewport_height=180
+window/size/viewport_width=960
+window/size/viewport_height=540
 window/stretch/mode="viewport"
+window/stretch/scale=3.0
 
 [rendering]
 
