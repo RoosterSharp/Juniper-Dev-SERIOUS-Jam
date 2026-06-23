@@ -14,3 +14,10 @@ value = 100.0
 fill_mode = 3
 texture_under = ExtResource("2_mutn8")
 texture_progress = ExtResource("3_fgi2k")
+
+[node name="DeadDialog" type="AcceptDialog" parent="."]
+process_mode = 3
+auto_translate_mode = 1
+initial_position = 1
+ok_button_text = "Restart"
+dialog_text = "You LOSE!"

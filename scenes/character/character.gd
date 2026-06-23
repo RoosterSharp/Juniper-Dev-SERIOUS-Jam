@@ -10,15 +10,17 @@ static var _node
 var max_health := 20
 var cyl_ref
 var effects = {}
+var dead = false
+@onready var dead_dialog = $DeadDialog
+
 
 func _init():
 	_node = self
 
-func _process(delta):
-	print(effects)
 
 static func get_instance() -> Character:
 	return _node
+
 
 func add_effect(effect_name : StringName, duration : int):
 	duration += 1 # adding 1 so that it lasts past this turn
@@ -29,6 +31,7 @@ func add_effect(effect_name : StringName, duration : int):
 			effects.merge({effect_name : duration},true)
 	else:
 		effects.merge({effect_name : duration})
+
 
 func has_effect(effect_name : StringName) -> bool:
 	return effects.keys().has(effect_name)
@@ -46,12 +49,22 @@ func damage(amt : int):
 	if has_effect(&"guard"):
 		return
 	health = max(health - amt, 0)
+	
 	disp_health()
+	
+	if health == 0:
+		dead = true
+		get_tree().paused = true
+		dead_dialog.show()
+		await dead_dialog.confirmed
+		get_tree().paused = false
+		get_tree().reload_current_scene()
 
 
 func heal(amt : int):
 	health = min(max_health, health+amt)
 	disp_health()
+
 
 func disp_health():
 	heart.value = float(health)/float(max_health) * 100.0

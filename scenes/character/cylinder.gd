@@ -61,10 +61,14 @@ func shoot_rand():
 
 
 func shoot():
-	shoot_timer.stop()
 	
 	var selected_chamber = DynamicCylinder.get_instance().selected_chamber
-	var i = selected_chamber
+	if bullets[selected_chamber] == Bullet.EMPTY:
+		return
+	
+	shoot_timer.stop()
+	
+	#var i = selected_chamber
 	
 	#while bullets[i] == EMPTY:
 		#i += 1
@@ -72,14 +76,15 @@ func shoot():
 			#i = 0
 		#if i == selected_chamber:
 			#return
+	#selected_chamber = i
 	
-	var bullet = bullets[i]
+	var bullet = bullets[selected_chamber]
 	
 	if bullet == Bullet.EMPTY:
 		return
 	
 	bullet.fire()
-	set_chamber(i, EMPTY)
+	set_chamber(selected_chamber, EMPTY)
 	
 	Character.get_instance().deplete_effects()
 	

@@ -12,7 +12,7 @@
 [ext_resource type="Resource" uid="uid://b5yco4aua0tjr" path="res://bullets/hot.tres" id="8_ca42v"]
 [ext_resource type="Resource" uid="uid://vis17bdyerx2" path="res://bullets/toy_dart.tres" id="9_rysoc"]
 [ext_resource type="Script" uid="uid://pnglifyfmafh" path="res://ui/shoot_time_bar.gd" id="10_dinhu"]
-[ext_resource type="Resource" uid="uid://b6rcqbk7k3wrs" path="res://bullets/warm_heal.tres" id="10_trtic"]
+[ext_resource type="Resource" uid="uid://b6rcqbk7k3wrs" path="res://bullets/hot_heal.tres" id="10_trtic"]
 [ext_resource type="Texture2D" uid="uid://dbkqtduyxi281" path="res://assets/gunSheet.png" id="13_kvuet"]
 
 [sub_resource type="Gradient" id="Gradient_lbhrr"]
