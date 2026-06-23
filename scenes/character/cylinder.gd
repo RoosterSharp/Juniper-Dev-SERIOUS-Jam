@@ -53,7 +53,7 @@ func shoot():
 	else:
 		char_ref.heat = 100.0
 
-	char_ref.shot_time = 0
+	shot_time = 0
 
 func fill_cylinder():
 	var new_arr : Array[Bullet]
