@@ -24,7 +24,7 @@ func _ready() -> void:
 		set_chamber(i, EMPTY)
 	char_ref = Character.get_instance()
 
-func _process(delta: float) -> void:
+func _process(_delta: float) -> void:
 	disp_heat()
 	
 	if shot_time < shot_frequency:

@@ -5,11 +5,12 @@ const HEAT_DROP_RATE = 20
 
 static var _node
 
-@export var base_health := 20
 @export var chambers_num := 6
+@onready var heart: TextureProgressBar = $Heart
 
 
-var health : int
+@export var health := 20
+var max_health := 20
 var heat := 0.0
 var max_heat = 100.0
 
@@ -22,12 +23,10 @@ static func get_instance() -> Character:
 	return _node
 
 func _ready():
-	health = base_health
 	cyl_ref = Cylinder.get_instance()
 	cyl_ref.change_size(chambers_num)
 
 func _process(delta):
-	
 	heat = move_toward(heat, 0, delta*HEAT_DROP_RATE)
 	
 
