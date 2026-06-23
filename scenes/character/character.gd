@@ -25,7 +25,7 @@ func damage(amt : int):
 
 
 func heal(amt : int):
-	health += amt
+	health = min(max_health, health+amt)
 	disp_health()
 
 func disp_health():

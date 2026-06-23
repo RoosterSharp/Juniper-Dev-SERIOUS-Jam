@@ -26,3 +26,5 @@ func _chamber_updated(idx, bullet):
 		sprite_2d.texture = bullet.texture
 	else:
 		sprite_2d.texture = null
+	
+	texture_button.visible = bullet != Bullet.EMPTY
