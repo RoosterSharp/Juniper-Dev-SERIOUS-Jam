@@ -42,8 +42,8 @@ func _init():
 func _input(event: InputEvent) -> void:
 	if !grabbed:
 		return
-		
-	if event is InputEventMouseMotion: 
+	
+	if event is InputEventMouseMotion:
 		if !mouse_warped:
 			var screen_pos = get_global_transform_with_canvas().origin
 			var warp_to = (event.position-screen_pos).normalized()*grab_dist+screen_pos
@@ -97,6 +97,9 @@ func get_radius():
 	return ((SLOT_WIDTH*num_slots/PI)+SLOT_WIDTH)/2
 
 func _grab():
+	if !input_enabled:
+		return
+	
 	grabbed = true
 	kill_snap_tween()
 	var screen_pos = get_global_transform_with_canvas().origin
@@ -105,6 +108,9 @@ func _grab():
 	grab_angle = atan2(diff.y,diff.x) - rotation
 
 func _release():
+	if !input_enabled:
+		return
+	
 	grabbed = false
 	selected_chamber = wrap(roundf(-rotation/(2.0*PI)*num_slots),0,num_slots)
 	snap()

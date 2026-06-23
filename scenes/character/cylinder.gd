@@ -63,7 +63,6 @@ func shoot_rand():
 	await tween.finished
 	cylinder_sprite.rotation = wrapf(cylinder_sprite.rotation,0,2*PI)
 	cylinder_sprite.set_input_enabled(true)
-	print("end")
 	DynamicCylinder.get_instance().selected_chamber = selected
 	shoot()
 
