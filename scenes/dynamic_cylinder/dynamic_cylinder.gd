@@ -12,6 +12,7 @@ const SLOT_WIDTH = 35
 
 static var _node : DynamicCylinder
 var selected_chamber = 0
+var input_enabled := true
 
 @export var num_slots := 6:
 	set(value):
@@ -113,6 +114,11 @@ func snap():
 	var tween = get_snap_tween()
 	tween.set_trans(Tween.TRANS_SPRING)
 	tween.tween_property(self,"rotation",snapped_rotation,0.2)
+
+func set_input_enabled(enabled):
+	input_enabled = enabled
+	if !enabled:
+		grabbed = false
 
 func get_snap_tween():
 	if snap_tween:
