@@ -14,12 +14,16 @@ static var _node
 var shot_frequency := 300
 var shot_time := 0 #since last shot
 var char_ref
+var deck : Array[Bullet]
 var bullets : Array[Bullet]
 var heat := 0.0
 var max_heat = 100.0
 
 func _init() -> void:
 	_node = self
+	deck.append(preload("res://bullets/basic.tres"))
+	deck.append(preload("res://bullets/heal.tres"))
+	deck.append(preload("res://bullets/cold.tres"))
 
 func _ready() -> void:
 	bullets.resize(DynamicCylinder.get_instance().num_slots)
@@ -37,6 +41,7 @@ func _process(delta: float) -> void:
 	else:
 		shoot_rand()
 		shot_time = 0
+	print(heat)
 
 
 static func get_instance() -> Cylinder:
@@ -70,17 +75,23 @@ func shoot_rand():
 func shoot():
 	var selected_chamber = DynamicCylinder.get_instance().selected_chamber
 	var i = selected_chamber
-	while bullets[i] == EMPTY:
-		i += 1
-		if i >= chambers_num:
-			i = 0
-		if i == selected_chamber:
-			return
 	
-	bullets[i].fire()
+	#while bullets[i] == EMPTY:
+		#i += 1
+		#if i >= chambers_num:
+			#i = 0
+		#if i == selected_chamber:
+			#return
+	
+	var bullet = bullets[i]
+	
+	if bullet == Bullet.EMPTY:
+		return
+	
+	bullet.fire()
 	set_chamber(i, EMPTY)
 	if heat <= max_heat - 20:
-		heat += 20
+		heat += bullet.heat
 	else:
 		heat = 100.0
 	
@@ -99,15 +110,13 @@ func fill_cylinder():
 
 func disp_heat():
 	var cyl_image = DynamicCylinder.get_instance()
-	var heat_col = heat/100.0 #gets a percentage value of heat level
-	if heat_col < 0:
-		heat_col = 0
-	#cyl_image.set_modulate(Color(1,heat_col,heat_col))
-	cyl_image.set_modulate(heat_color_ramp.sample(0.5+heat_col*0.5))
+	var heat_percentage = heat/100.0 #gets a percentage value of heat level
+	heat_percentage = clamp(heat_percentage,-100,100)
+	cyl_image.set_modulate(heat_color_ramp.sample(0.5+heat_percentage*0.5))
 
 
 func rand_bullet() -> Bullet:
-	return preload("res://bullets/basic.tres")
+	return Bullet.rand_from(deck)
 
 
 func set_chamber(idx : int, bullet : Bullet):

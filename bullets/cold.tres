@@ -1,0 +1,20 @@
+[gd_resource type="Resource" script_class="Bullet" load_steps=6 format=3 uid="uid://cij8ni53p8pl6"]
+
+[ext_resource type="Script" uid="uid://yvf416wo0lny" path="res://bullets/bullet/bullet_effect.gd" id="1_5l2mb"]
+[ext_resource type="Script" uid="uid://bswb22uloxwgq" path="res://bullets/bullet/bullet.gd" id="2_d7o77"]
+[ext_resource type="Script" uid="uid://231qk3vaa3mq" path="res://bullets/bullet/be_damage.gd" id="2_w4m8h"]
+[ext_resource type="Texture2D" uid="uid://cxipa5lee5d66" path="res://assets/bullets/cold.png" id="3_d7o77"]
+
+[sub_resource type="Resource" id="Resource_r4al8"]
+script = ExtResource("2_w4m8h")
+amount = 5
+metadata/_custom_type_script = "uid://231qk3vaa3mq"
+
+[resource]
+script = ExtResource("2_d7o77")
+type = &"cold"
+texture = ExtResource("3_d7o77")
+heat = -40.0
+rarity = 5.0
+effects = Array[ExtResource("1_5l2mb")]([SubResource("Resource_r4al8")])
+metadata/_custom_type_script = "uid://bswb22uloxwgq"

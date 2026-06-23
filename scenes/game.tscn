@@ -6,7 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://c8xkn0uh03ynm" path="res://scenes/character/character.tscn" id="5_iywne"]
 
 [sub_resource type="Gradient" id="Gradient_lbhrr"]
-offsets = PackedFloat32Array(0.298387, 0.5, 0.736559, 0.887097, 1)
+offsets = PackedFloat32Array(0.271605, 0.5, 0.736559, 0.887097, 1)
 colors = PackedColorArray(0.242392, 0.76738, 0.86098, 1, 0.507813, 0.507813, 0.507813, 1, 1, 0.4383, 0.213868, 1, 0.9747, 0, 0.0747747, 1, 0.67643, 0.785002, 1, 1)
 
 [node name="Node2D" type="Node2D"]

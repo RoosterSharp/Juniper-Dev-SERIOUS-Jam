@@ -1,7 +1,7 @@
 [gd_resource type="Resource" script_class="Bullet" load_steps=5 format=3 uid="uid://opk2mqtfcpyx"]
 
-[ext_resource type="Script" uid="uid://yvf416wo0lny" path="res://scenes/bullet/bullet_effect.gd" id="1_kf41r"]
-[ext_resource type="Script" uid="uid://bswb22uloxwgq" path="res://scenes/bullet/bullet.gd" id="2_l5jb1"]
+[ext_resource type="Script" uid="uid://yvf416wo0lny" path="res://bullets/bullet/bullet_effect.gd" id="1_kf41r"]
+[ext_resource type="Script" uid="uid://bswb22uloxwgq" path="res://bullets/bullet/bullet.gd" id="2_l5jb1"]
 
 [sub_resource type="Gradient" id="Gradient_ussvn"]
 interpolation_mode = 1

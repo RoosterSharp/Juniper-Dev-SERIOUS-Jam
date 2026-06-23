@@ -1,8 +1,8 @@
 [gd_resource type="Resource" script_class="Bullet" load_steps=6 format=3 uid="uid://bwiarpt5nmh82"]
 
-[ext_resource type="Script" uid="uid://yvf416wo0lny" path="res://scenes/bullet/bullet_effect.gd" id="1_ne8dv"]
-[ext_resource type="Script" uid="uid://231qk3vaa3mq" path="res://scenes/bullet/be_damage.gd" id="2_qbhbx"]
-[ext_resource type="Script" uid="uid://bswb22uloxwgq" path="res://scenes/bullet/bullet.gd" id="3_d7qw4"]
+[ext_resource type="Script" uid="uid://yvf416wo0lny" path="res://bullets/bullet/bullet_effect.gd" id="1_ne8dv"]
+[ext_resource type="Script" uid="uid://231qk3vaa3mq" path="res://bullets/bullet/be_damage.gd" id="2_qbhbx"]
+[ext_resource type="Script" uid="uid://bswb22uloxwgq" path="res://bullets/bullet/bullet.gd" id="3_d7qw4"]
 [ext_resource type="Texture2D" uid="uid://bt5g8buidbtir" path="res://assets/bullets/basic.png" id="4_c47f8"]
 
 [sub_resource type="Resource" id="Resource_m04t0"]
@@ -14,6 +14,7 @@ metadata/_custom_type_script = "uid://231qk3vaa3mq"
 script = ExtResource("3_d7qw4")
 type = &"normal"
 texture = ExtResource("4_c47f8")
-heat = 5.0
+heat = 20.0
+rarity = 1.0
 effects = Array[ExtResource("1_ne8dv")]([SubResource("Resource_m04t0")])
 metadata/_custom_type_script = "uid://bswb22uloxwgq"
