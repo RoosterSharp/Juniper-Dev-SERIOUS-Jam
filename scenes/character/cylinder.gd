@@ -74,6 +74,10 @@ func set_chamber(idx : int, bullet : Bullet):
 
 func change_size(new_size: int):
 	DynamicCylinder.get_instance().set_num_slots(new_size)
+	bullets.resize(new_size)
+	for i in new_size:
+		if bullets[i] == null:
+			bullets[i] = EMPTY
 
 static func get_bullets() -> Array[Bullet]:
 	return _node.bullets.duplicate()

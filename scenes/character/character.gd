@@ -27,6 +27,7 @@ static func get_instance() -> Character:
 func _ready():
 	health = base_health
 	cyl_ref = Cylinder.get_instance()
+	cyl_ref.change_size(chambers_num)
 
 func _process(delta):
 	
@@ -37,3 +38,9 @@ func _process(delta):
 	else:
 		cyl_ref.shoot()
 		shot_time = 0
+
+func damage(amt : int):
+	health = max(health - amt, 0)
+
+func heal(amt : int):
+	health += amt

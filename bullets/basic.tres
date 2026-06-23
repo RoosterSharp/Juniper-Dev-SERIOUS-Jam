@@ -14,5 +14,6 @@ metadata/_custom_type_script = "uid://231qk3vaa3mq"
 script = ExtResource("3_d7qw4")
 type = &"normal"
 texture = ExtResource("4_c47f8")
+heat = 5.0
 effects = Array[ExtResource("1_ne8dv")]([SubResource("Resource_m04t0")])
 metadata/_custom_type_script = "uid://bswb22uloxwgq"
