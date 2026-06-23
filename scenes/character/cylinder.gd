@@ -51,10 +51,10 @@ func shoot_rand():
 	cylinder_sprite.set_input_enabled(false)
 	var spin_dir = (randi()%2)*2-1 # random either 1 or -1
 	var tween = create_tween()
-	tween.set_trans(Tween.TRANS_EXPO)
-	tween.tween_property(cylinder_sprite,"rotation",-2.0*PI*selected/chambers_num+6*PI * spin_dir ,2.0)
-	await tween.finished
 	cylinder_sprite.rotation = wrapf(cylinder_sprite.rotation,0,2*PI)
+	tween.set_trans(Tween.TRANS_EXPO)
+	tween.tween_property(cylinder_sprite,"rotation",-2.0*PI*selected/chambers_num+6*PI * spin_dir ,1.5)
+	await tween.finished
 	cylinder_sprite.set_input_enabled(true)
 	DynamicCylinder.get_instance().selected_chamber = selected
 	shoot()
