@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://5nev65ygcq66"]
+[gd_scene load_steps=14 format=3 uid="uid://5nev65ygcq66"]
 
 [ext_resource type="Texture2D" uid="uid://daxq2pw8ooofd" path="res://assets/background.jpg" id="1_lbhrr"]
 [ext_resource type="Script" uid="uid://b8e0lof3gnqpv" path="res://scenes/character/cylinder.gd" id="2_lbhrr"]
@@ -11,6 +11,7 @@
 [ext_resource type="Resource" uid="uid://c281ocxm28prj" path="res://bullets/heal.tres" id="7_ir15t"]
 [ext_resource type="Resource" uid="uid://b5yco4aua0tjr" path="res://bullets/hot.tres" id="8_ca42v"]
 [ext_resource type="Resource" uid="uid://vis17bdyerx2" path="res://bullets/toy_dart.tres" id="9_rysoc"]
+[ext_resource type="Script" uid="uid://pnglifyfmafh" path="res://ui/shoot_time_bar.gd" id="10_dinhu"]
 
 [sub_resource type="Gradient" id="Gradient_lbhrr"]
 offsets = PackedFloat32Array(0.271605, 0.5, 0.736559, 0.887097, 1)
@@ -30,6 +31,16 @@ heat_color_ramp = SubResource("Gradient_lbhrr")
 deck = Array[ExtResource("3_kvpfn")]([ExtResource("4_dinhu"), ExtResource("5_kvuet"), ExtResource("6_trtic"), ExtResource("7_ir15t"), ExtResource("8_ca42v"), ExtResource("9_rysoc")])
 
 [node name="ShootTimer" type="Timer" parent="BarrelManager"]
+wait_time = 5.0
+one_shot = true
+autostart = true
+
+[node name="ProgressBar" type="ProgressBar" parent="BarrelManager/ShootTimer"]
+offset_left = 12.0
+offset_top = 5.0
+offset_right = 294.0
+offset_bottom = 32.0
+script = ExtResource("10_dinhu")
 
 [node name="HeightAlignedBarrel" parent="BarrelManager" instance=ExtResource("2_lnu2h")]
 
@@ -50,5 +61,6 @@ offset_right = 314.438
 offset_bottom = 97.6252
 text = "fill"
 
+[connection signal="timeout" from="BarrelManager/ShootTimer" to="BarrelManager" method="shoot_rand"]
 [connection signal="button_down" from="Button" to="BarrelManager" method="shoot"]
 [connection signal="button_down" from="Button2" to="BarrelManager" method="fill_cylinder"]

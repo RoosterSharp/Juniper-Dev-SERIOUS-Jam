@@ -11,13 +11,13 @@ static var _node
 @export var chambers_num := 6
 @export var heat_color_ramp : Gradient
 
-var shot_frequency := 300
-var shot_time := 0 #since last shot
 var char_ref
 @export var deck : Array[Bullet]
 var bullets : Array[Bullet]
 var heat := 0.0
 var max_heat = 100.0
+
+@onready var shoot_timer = $ShootTimer
 
 func _init() -> void:
 	_node = self
@@ -28,14 +28,7 @@ func _ready() -> void:
 
 func _process(delta: float) -> void:
 	heat = move_toward(heat, 0, delta*HEAT_DROP_RATE)
-	
 	disp_heat()
-	
-	if shot_time < shot_frequency:
-		shot_time += 1
-	else:
-		shoot_rand()
-		shot_time = 0
 
 
 static func get_instance() -> Cylinder:
@@ -43,6 +36,7 @@ static func get_instance() -> Cylinder:
 
 
 func shoot_rand():
+	shoot_timer.stop()
 	var options = []
 	for i in chambers_num:
 		if bullets[i] != EMPTY:
@@ -67,6 +61,8 @@ func shoot_rand():
 
 
 func shoot():
+	shoot_timer.stop()
+	
 	var selected_chamber = DynamicCylinder.get_instance().selected_chamber
 	var i = selected_chamber
 	
@@ -92,17 +88,15 @@ func shoot():
 	else:
 		heat = 100.0
 	
-	shot_time = 0
+	shoot_timer.start()
 
 
 func fill_cylinder():
-	var new_arr : Array[Bullet]
 	var chambers = DynamicCylinder.get_instance().num_slots
 	for chamber in chambers:
 		if bullets[chamber] == EMPTY:
 			set_chamber(chamber, rand_bullet())
-	shot_time = 0
-	return new_arr
+	shoot_timer.start()
 
 
 func disp_heat():
