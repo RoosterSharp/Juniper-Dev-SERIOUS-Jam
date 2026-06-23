@@ -36,14 +36,14 @@ static func get_instance() -> Cylinder:
 
 
 func shoot_rand():
+	if is_empty():
+		return
+	
 	shoot_timer.stop()
 	var options = []
 	for i in chambers_num:
 		if bullets[i] != EMPTY:
 			options.push_back(i)
-	
-	if options.size() == 0:
-		return
 	
 	var selected = options.pick_random()
 	var cylinder_sprite = DynamicCylinder.get_instance()
@@ -51,10 +51,10 @@ func shoot_rand():
 	cylinder_sprite.set_input_enabled(false)
 	var spin_dir = (randi()%2)*2-1 # random either 1 or -1
 	var tween = create_tween()
-	tween.set_trans(Tween.TRANS_EXPO)
-	tween.tween_property(cylinder_sprite,"rotation",-2.0*PI*selected/chambers_num+6*PI * spin_dir ,2.0)
-	await tween.finished
 	cylinder_sprite.rotation = wrapf(cylinder_sprite.rotation,0,2*PI)
+	tween.set_trans(Tween.TRANS_EXPO)
+	tween.tween_property(cylinder_sprite,"rotation",-2.0*PI*selected/chambers_num+6*PI * spin_dir ,1.5)
+	await tween.finished
 	cylinder_sprite.set_input_enabled(true)
 	DynamicCylinder.get_instance().selected_chamber = selected
 	shoot()
@@ -97,6 +97,10 @@ func fill_cylinder():
 		if bullets[chamber] == EMPTY:
 			set_chamber(chamber, rand_bullet())
 	shoot_timer.start()
+
+
+func is_empty() -> bool:
+	return bullets.all(func(b): return b == Bullet.EMPTY)
 
 
 func disp_heat():
