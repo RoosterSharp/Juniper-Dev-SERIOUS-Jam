@@ -36,14 +36,14 @@ static func get_instance() -> Cylinder:
 
 
 func shoot_rand():
+	if is_empty():
+		return
+	
 	shoot_timer.stop()
 	var options = []
 	for i in chambers_num:
 		if bullets[i] != EMPTY:
 			options.push_back(i)
-	
-	if options.size() == 0:
-		return
 	
 	var selected = options.pick_random()
 	var cylinder_sprite = DynamicCylinder.get_instance()
@@ -97,6 +97,10 @@ func fill_cylinder():
 		if bullets[chamber] == EMPTY:
 			set_chamber(chamber, rand_bullet())
 	shoot_timer.start()
+
+
+func is_empty() -> bool:
+	return bullets.all(func(b): return b == Bullet.EMPTY)
 
 
 func disp_heat():
