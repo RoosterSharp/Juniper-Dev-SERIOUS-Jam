@@ -24,7 +24,7 @@ heat_color_ramp = SubResource("Gradient_lbhrr")
 [node name="HeightAlignedBarrel" parent="BarrelManager" instance=ExtResource("2_lnu2h")]
 
 [node name="Character" parent="." instance=ExtResource("5_iywne")]
-position = Vector2(63.4378, 87.6252)
+position = Vector2(23, 66)
 
 [node name="Button" type="Button" parent="."]
 offset_left = 239.438

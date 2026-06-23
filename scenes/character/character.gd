@@ -21,7 +21,13 @@ static func get_instance() -> Character:
 
 func damage(amt : int):
 	health = max(health - amt, 0)
+	disp_health()
 
 
 func heal(amt : int):
 	health += amt
+	disp_health()
+
+func disp_health():
+	heart.value = float(health)/float(max_health) * 100.0
+	print(heart.value)
