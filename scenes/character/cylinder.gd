@@ -3,7 +3,7 @@ extends Node
 
 signal chamber_updated(idx : int, new_value)
 
-const HEAT_DROP_RATE = 20
+const HEAT_DROP_RATE = 10
 const EMPTY = preload("res://bullets/empty.tres")
 
 static var _node
