@@ -4,4 +4,4 @@ extends BulletEffect
 @export var amount := 5
 
 func apply():
-	pass
+	Character.get_instance().damage(amount)
