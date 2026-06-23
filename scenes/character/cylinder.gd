@@ -9,6 +9,8 @@ static var _node
 
 @export var heat_color_ramp : Gradient
 
+var shot_frequency := 300
+var shot_time := 0 #since last shot
 var char_ref
 var bullets : Array[Bullet]
 
@@ -24,6 +26,12 @@ func _ready() -> void:
 
 func _process(delta: float) -> void:
 	disp_heat()
+	
+	if shot_time < shot_frequency:
+		shot_time += 1
+	else:
+		shoot()
+		shot_time = 0
 
 static func get_instance() -> Cylinder:
 	return _node
@@ -53,7 +61,7 @@ func fill_cylinder():
 	for chamber in chambers:
 		if bullets[chamber] == EMPTY:
 			set_chamber(chamber, rand_bullet())
-	char_ref.shot_time = 0
+	shot_time = 0
 	return new_arr
 
 func disp_heat():

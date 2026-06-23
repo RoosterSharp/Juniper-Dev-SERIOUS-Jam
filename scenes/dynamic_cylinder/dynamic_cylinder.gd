@@ -30,6 +30,8 @@ var grab_dist
 var grab_angle
 var mouse_warped = false
 
+var snap_tween : Tween
+
 func _ready() -> void:
 	set_num_slots(num_slots)
 
@@ -95,6 +97,7 @@ func get_radius():
 
 func _grab():
 	grabbed = true
+	kill_snap_tween()
 	var screen_pos = get_global_transform_with_canvas().origin
 	grab_dist = get_viewport().get_mouse_position().distance_to(screen_pos)
 	var diff = get_viewport().get_mouse_position() - screen_pos
@@ -107,6 +110,17 @@ func _release():
 
 func snap():
 	var snapped_rotation = roundf(rotation/(2.0*PI)*num_slots)/num_slots*2.0*PI
-	var tween = create_tween()
+	var tween = get_snap_tween()
 	tween.set_trans(Tween.TRANS_SPRING)
 	tween.tween_property(self,"rotation",snapped_rotation,0.2)
+
+func get_snap_tween():
+	if snap_tween:
+		snap_tween.kill()
+	snap_tween = create_tween()
+	return snap_tween
+
+func kill_snap_tween():
+	if snap_tween:
+		snap_tween.kill()
+		snap_tween = null

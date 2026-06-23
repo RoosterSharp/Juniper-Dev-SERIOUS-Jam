@@ -12,9 +12,6 @@ static var _node
 var health : int
 var heat := 0.0
 var max_heat = 100.0
-var shot_frequency := 300
-var shot_time := 0 #since last shot
-var selected_chamber : int
 
 var cyl_ref
 
@@ -33,11 +30,7 @@ func _process(delta):
 	
 	heat = move_toward(heat, 0, delta*HEAT_DROP_RATE)
 	
-	if shot_time < shot_frequency:
-		shot_time += 1
-	else:
-		cyl_ref.shoot()
-		shot_time = 0
+
 
 func damage(amt : int):
 	health = max(health - amt, 0)
