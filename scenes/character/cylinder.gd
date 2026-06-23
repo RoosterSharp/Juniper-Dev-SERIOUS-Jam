@@ -22,8 +22,7 @@ var max_heat = 100.0
 func _init() -> void:
 	_node = self
 	deck.append(preload("res://bullets/basic.tres"))
-	deck.append(preload("res://bullets/heal.tres"))
-	deck.append(preload("res://bullets/cold.tres"))
+	deck.append(preload("res://bullets/guard.tres"))
 
 func _ready() -> void:
 	bullets.resize(DynamicCylinder.get_instance().num_slots)
@@ -41,7 +40,6 @@ func _process(delta: float) -> void:
 	else:
 		shoot_rand()
 		shot_time = 0
-	print(heat)
 
 
 static func get_instance() -> Cylinder:
@@ -90,6 +88,9 @@ func shoot():
 	
 	bullet.fire()
 	set_chamber(i, EMPTY)
+	
+	Character.get_instance().deplete_effects()
+	
 	if heat <= max_heat - 20:
 		heat += bullet.heat
 	else:
