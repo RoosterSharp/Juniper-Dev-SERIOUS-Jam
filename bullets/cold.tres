@@ -15,6 +15,6 @@ script = ExtResource("2_d7o77")
 type = &"cold"
 texture = ExtResource("3_d7o77")
 heat = -40.0
-rarity = 5.0
+weight = 0.2
 effects = Array[ExtResource("1_5l2mb")]([SubResource("Resource_r4al8")])
 metadata/_custom_type_script = "uid://bswb22uloxwgq"

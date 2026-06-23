@@ -1,8 +1,9 @@
-[gd_resource type="Resource" script_class="Bullet" load_steps=5 format=3 uid="uid://ckcpm62hk4k6u"]
+[gd_resource type="Resource" script_class="Bullet" load_steps=6 format=3 uid="uid://ckcpm62hk4k6u"]
 
 [ext_resource type="Script" uid="uid://yvf416wo0lny" path="res://bullets/bullet/bullet_effect.gd" id="1_b80ao"]
 [ext_resource type="Script" uid="uid://bswb22uloxwgq" path="res://bullets/bullet/bullet.gd" id="2_6wdf1"]
 [ext_resource type="Script" uid="uid://bkxbfj3n7cfvb" path="res://bullets/bullet/be_effect.gd" id="2_htwe7"]
+[ext_resource type="Texture2D" uid="uid://b0ynfeydi6ti3" path="res://assets/bullets/fortify.png" id="4_htwe7"]
 
 [sub_resource type="Resource" id="Resource_wdftd"]
 script = ExtResource("2_htwe7")
@@ -12,8 +13,9 @@ metadata/_custom_type_script = "uid://bkxbfj3n7cfvb"
 
 [resource]
 script = ExtResource("2_6wdf1")
-type = &"shield"
-heat = 5.0
-rarity = 5.0
+type = &"guard"
+texture = ExtResource("4_htwe7")
+heat = 10.0
+weight = 0.1
 effects = Array[ExtResource("1_b80ao")]([SubResource("Resource_wdftd")])
 metadata/_custom_type_script = "uid://bswb22uloxwgq"

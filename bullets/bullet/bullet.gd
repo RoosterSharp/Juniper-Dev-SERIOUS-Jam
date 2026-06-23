@@ -6,7 +6,7 @@ const EMPTY = preload("res://bullets/empty.tres")
 @export var type : StringName
 @export var texture : Texture2D
 @export var heat := 5.0
-@export var rarity := 1.0
+@export var weight := 1.0
 @export var effects : Array[BulletEffect]
 
 
@@ -19,6 +19,6 @@ static func rand_from(bullets):
 	var weights = []
 	
 	for b in bullets:
-		weights.append(1.0/b.rarity)
+		weights.append(b.weight)
 	
 	return bullets[rng.rand_weighted(weights)]

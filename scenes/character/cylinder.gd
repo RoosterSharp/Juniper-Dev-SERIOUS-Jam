@@ -14,20 +14,16 @@ static var _node
 var shot_frequency := 300
 var shot_time := 0 #since last shot
 var char_ref
-var deck : Array[Bullet]
+@export var deck : Array[Bullet]
 var bullets : Array[Bullet]
 var heat := 0.0
 var max_heat = 100.0
 
 func _init() -> void:
 	_node = self
-	deck.append(preload("res://bullets/basic.tres"))
-	deck.append(preload("res://bullets/guard.tres"))
 
 func _ready() -> void:
-	bullets.resize(DynamicCylinder.get_instance().num_slots)
-	for i in bullets.size():
-		set_chamber(i, EMPTY)
+	change_size(chambers_num)
 	char_ref = Character.get_instance()
 
 func _process(delta: float) -> void:

@@ -1,9 +1,16 @@
-[gd_scene load_steps=6 format=3 uid="uid://5nev65ygcq66"]
+[gd_scene load_steps=13 format=3 uid="uid://5nev65ygcq66"]
 
 [ext_resource type="Texture2D" uid="uid://daxq2pw8ooofd" path="res://assets/background.jpg" id="1_lbhrr"]
 [ext_resource type="Script" uid="uid://b8e0lof3gnqpv" path="res://scenes/character/cylinder.gd" id="2_lbhrr"]
 [ext_resource type="PackedScene" uid="uid://72sb1sarxgr" path="res://scenes/dynamic_cylinder/height_aligned_barrel.tscn" id="2_lnu2h"]
+[ext_resource type="Script" uid="uid://bswb22uloxwgq" path="res://bullets/bullet/bullet.gd" id="3_kvpfn"]
+[ext_resource type="Resource" uid="uid://bwiarpt5nmh82" path="res://bullets/basic.tres" id="4_dinhu"]
 [ext_resource type="PackedScene" uid="uid://c8xkn0uh03ynm" path="res://scenes/character/character.tscn" id="5_iywne"]
+[ext_resource type="Resource" uid="uid://cij8ni53p8pl6" path="res://bullets/cold.tres" id="5_kvuet"]
+[ext_resource type="Resource" uid="uid://ckcpm62hk4k6u" path="res://bullets/guard.tres" id="6_trtic"]
+[ext_resource type="Resource" uid="uid://c281ocxm28prj" path="res://bullets/heal.tres" id="7_ir15t"]
+[ext_resource type="Resource" uid="uid://b5yco4aua0tjr" path="res://bullets/hot.tres" id="8_ca42v"]
+[ext_resource type="Resource" uid="uid://vis17bdyerx2" path="res://bullets/toy_dart.tres" id="9_rysoc"]
 
 [sub_resource type="Gradient" id="Gradient_lbhrr"]
 offsets = PackedFloat32Array(0.271605, 0.5, 0.736559, 0.887097, 1)
@@ -20,6 +27,9 @@ texture = ExtResource("1_lbhrr")
 position = Vector2(160.438, 89.6252)
 script = ExtResource("2_lbhrr")
 heat_color_ramp = SubResource("Gradient_lbhrr")
+deck = Array[ExtResource("3_kvpfn")]([ExtResource("4_dinhu"), ExtResource("5_kvuet"), ExtResource("6_trtic"), ExtResource("7_ir15t"), ExtResource("8_ca42v"), ExtResource("9_rysoc")])
+
+[node name="ShootTimer" type="Timer" parent="BarrelManager"]
 
 [node name="HeightAlignedBarrel" parent="BarrelManager" instance=ExtResource("2_lnu2h")]
 
