@@ -1,8 +1,8 @@
 [gd_resource type="Resource" script_class="Bullet" load_steps=6 format=3 uid="uid://ckcpm62hk4k6u"]
 
-[ext_resource type="Script" uid="uid://yvf416wo0lny" path="res://bullets/bullet/bullet_effect.gd" id="1_b80ao"]
-[ext_resource type="Script" uid="uid://bswb22uloxwgq" path="res://bullets/bullet/bullet.gd" id="2_6wdf1"]
-[ext_resource type="Script" uid="uid://bkxbfj3n7cfvb" path="res://bullets/bullet/be_effect.gd" id="2_htwe7"]
+[ext_resource type="Script" uid="uid://yvf416wo0lny" path="res://bullets/scripts/bullet_effect.gd" id="1_b80ao"]
+[ext_resource type="Script" uid="uid://bswb22uloxwgq" path="res://bullets/scripts/bullet.gd" id="2_6wdf1"]
+[ext_resource type="Script" uid="uid://bkxbfj3n7cfvb" path="res://bullets/scripts/be_effect.gd" id="2_htwe7"]
 [ext_resource type="Texture2D" uid="uid://b0ynfeydi6ti3" path="res://assets/bullets/fortify.png" id="4_htwe7"]
 
 [sub_resource type="Resource" id="Resource_wdftd"]

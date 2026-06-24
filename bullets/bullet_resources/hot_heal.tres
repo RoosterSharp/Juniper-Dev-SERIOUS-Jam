@@ -1,9 +1,9 @@
 [gd_resource type="Resource" script_class="Bullet" load_steps=8 format=3 uid="uid://b6rcqbk7k3wrs"]
 
-[ext_resource type="Script" uid="uid://yvf416wo0lny" path="res://bullets/bullet/bullet_effect.gd" id="1_5shfb"]
-[ext_resource type="Script" uid="uid://djslaoa4apinu" path="res://bullets/bullet/be_heal.gd" id="2_4p1y8"]
-[ext_resource type="Script" uid="uid://bpwfkog33hlog" path="res://bullets/bullet/be_temp_condition.gd" id="3_ksbo5"]
-[ext_resource type="Script" uid="uid://bswb22uloxwgq" path="res://bullets/bullet/bullet.gd" id="4_cmrvk"]
+[ext_resource type="Script" uid="uid://yvf416wo0lny" path="res://bullets/scripts/bullet_effect.gd" id="1_5shfb"]
+[ext_resource type="Script" uid="uid://djslaoa4apinu" path="res://bullets/scripts/be_heal.gd" id="2_4p1y8"]
+[ext_resource type="Script" uid="uid://bpwfkog33hlog" path="res://bullets/scripts/be_temp_condition.gd" id="3_ksbo5"]
+[ext_resource type="Script" uid="uid://bswb22uloxwgq" path="res://bullets/scripts/bullet.gd" id="4_cmrvk"]
 [ext_resource type="Texture2D" uid="uid://cry40cthvy61" path="res://assets/bullets/warmHeal.png" id="5_w8kxr"]
 
 [sub_resource type="Resource" id="Resource_jtg4t"]

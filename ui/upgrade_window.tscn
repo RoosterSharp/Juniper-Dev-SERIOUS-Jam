@@ -1,0 +1,38 @@
+[gd_scene load_steps=2 format=3 uid="uid://tgr0h14qhgpf"]
+
+[ext_resource type="Script" uid="uid://da6thcfi3rmsh" path="res://ui/upgrade_window.gd" id="1_i4p6r"]
+
+[node name="UpgradeWindow" type="Window"]
+process_mode = 3
+auto_translate_mode = 1
+title = "Pick one!!!"
+initial_position = 1
+size = Vector2i(230, 100)
+visible = false
+script = ExtResource("1_i4p6r")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Button1" type="Button" parent="HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "1"
+
+[node name="Button2" type="Button" parent="HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "2"
+
+[node name="Button3" type="Button" parent="HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "3"
+
+[connection signal="button_down" from="HBoxContainer/Button1" to="." method="_on_button_1_button_down"]
+[connection signal="button_down" from="HBoxContainer/Button2" to="." method="_on_button_2_button_down"]
+[connection signal="button_down" from="HBoxContainer/Button3" to="." method="_on_button_3_button_down"]

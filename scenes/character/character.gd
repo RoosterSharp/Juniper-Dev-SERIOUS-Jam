@@ -12,6 +12,7 @@ var cyl_ref
 var effects = {}
 var dead = false
 @onready var dead_dialog = $DeadDialog
+@onready var upgrade_window = $UpgradeWindow
 
 
 func _init():
@@ -21,6 +22,11 @@ func _init():
 static func get_instance() -> Character:
 	return _node
 
+func _ready():
+	Cylinder.get_instance().emptied.connect(reset)
+
+func reset():
+	health = max_health
 
 func add_effect(effect_name : StringName, duration : int):
 	duration += 1 # adding 1 so that it lasts past this turn

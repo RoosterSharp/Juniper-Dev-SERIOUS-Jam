@@ -2,6 +2,7 @@ class_name Cylinder
 extends Node
 
 signal chamber_updated(idx : int, new_value)
+signal emptied
 
 const HEAT_DROP_RATE = 10
 const EMPTY = preload("res://bullets/empty.tres")
@@ -96,6 +97,10 @@ func shoot():
 		heat = 100.0
 	
 	shoot_timer.start()
+	
+	if is_empty():
+		change_size(chambers_num + 1)
+		emptied.emit()
 
 
 func fill_cylinder():
@@ -127,6 +132,7 @@ func set_chamber(idx : int, bullet : Bullet):
 
 
 func change_size(new_size: int):
+	chambers_num = new_size
 	DynamicCylinder.get_instance().set_num_slots(new_size)
 	bullets.resize(new_size)
 	for i in new_size:
