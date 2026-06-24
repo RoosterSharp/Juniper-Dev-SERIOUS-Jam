@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=3 uid="uid://5nev65ygcq66"]
+[gd_scene load_steps=16 format=3 uid="uid://5nev65ygcq66"]
 
 [ext_resource type="Texture2D" uid="uid://daxq2pw8ooofd" path="res://assets/background.jpg" id="1_lbhrr"]
 [ext_resource type="Script" uid="uid://b8e0lof3gnqpv" path="res://scenes/character/cylinder.gd" id="2_lbhrr"]
@@ -13,33 +13,11 @@
 [ext_resource type="Resource" uid="uid://vis17bdyerx2" path="res://bullets/toy_dart.tres" id="9_rysoc"]
 [ext_resource type="Script" uid="uid://pnglifyfmafh" path="res://ui/shoot_time_bar.gd" id="10_dinhu"]
 [ext_resource type="Resource" uid="uid://b6rcqbk7k3wrs" path="res://bullets/hot_heal.tres" id="10_trtic"]
-[ext_resource type="Texture2D" uid="uid://dbkqtduyxi281" path="res://assets/gunSheet.png" id="13_kvuet"]
+[ext_resource type="PackedScene" uid="uid://cvhaw71mx6a1b" path="res://scenes/gun/gun.tscn" id="14_trtic"]
 
 [sub_resource type="Gradient" id="Gradient_lbhrr"]
 offsets = PackedFloat32Array(0.271605, 0.5, 0.736559, 0.887097, 1)
 colors = PackedColorArray(0.242392, 0.76738, 0.86098, 1, 0.507813, 0.507813, 0.507813, 1, 1, 0.4383, 0.213868, 1, 0.9747, 0, 0.0747747, 1, 0.994149, 0.988718, 1, 1)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_trtic"]
-atlas = ExtResource("13_kvuet")
-region = Rect2(0, 0, 81, 45)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_ir15t"]
-atlas = ExtResource("13_kvuet")
-region = Rect2(81, 0, 81, 45)
-
-[sub_resource type="SpriteFrames" id="SpriteFrames_ca42v"]
-animations = [{
-"frames": [{
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_trtic")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_ir15t")
-}],
-"loop": true,
-"name": &"default",
-"speed": 5.0
-}]
 
 [node name="Node2D" type="Node2D"]
 
@@ -86,9 +64,8 @@ offset_right = 95.0
 offset_bottom = 137.0
 text = "fill"
 
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
-position = Vector2(121, 75)
-sprite_frames = SubResource("SpriteFrames_ca42v")
+[node name="Gun" parent="." instance=ExtResource("14_trtic")]
+position = Vector2(127, 71)
 
 [connection signal="timeout" from="BarrelManager/ShootTimer" to="BarrelManager" method="shoot_rand"]
 [connection signal="button_down" from="Button" to="BarrelManager" method="shoot"]

@@ -67,7 +67,7 @@ func shoot():
 		return
 	
 	shoot_timer.stop()
-	
+	Gun.get_instance().shoot()
 	#var i = selected_chamber
 	
 	#while bullets[i] == EMPTY:
