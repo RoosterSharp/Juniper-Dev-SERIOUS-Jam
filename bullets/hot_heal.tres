@@ -14,7 +14,7 @@ metadata/_custom_type_script = "uid://djslaoa4apinu"
 [sub_resource type="Resource" id="Resource_sc7ba"]
 script = ExtResource("3_ksbo5")
 conditional_type = 0
-heat_level = 50
+heat_level = 40
 effects = Array[ExtResource("1_5shfb")]([SubResource("Resource_jtg4t")])
 metadata/_custom_type_script = "uid://bpwfkog33hlog"
 
