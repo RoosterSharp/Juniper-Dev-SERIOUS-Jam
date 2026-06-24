@@ -14,6 +14,7 @@ func _ready() -> void:
 	texture_button.button_down.connect(_button_down)
 	sprite_2d.texture = EMPTY.texture
 	Cylinder.get_instance().chamber_updated.connect(_chamber_updated)
+	texture_button.visible = false
 
 func _button_down():
 	button_pressed.emit(button_idx)
@@ -27,4 +28,4 @@ func _chamber_updated(idx, bullet):
 	else:
 		sprite_2d.texture = null
 	
-	texture_button.visible = bullet != Bullet.EMPTY
+	#texture_button.visible = bullet != Bullet.EMPTY

@@ -16,6 +16,7 @@ var char_ref
 var bullets : Array[Bullet]
 var heat := 0.0
 var max_heat = 100.0
+var score := 0
 
 @onready var shoot_timer = $ShootTimer
 
@@ -83,6 +84,7 @@ func shoot():
 	if bullet == Bullet.EMPTY:
 		return
 	
+	score += 1
 	bullet.fire()
 	set_chamber(selected_chamber, EMPTY)
 	
