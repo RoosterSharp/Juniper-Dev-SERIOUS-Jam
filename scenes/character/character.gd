@@ -78,3 +78,8 @@ func disp_health():
 func bullet_effect(effect: String):
 	heart.texture_under = load("res://assets/hearts/heart" + effect + "Bottom.png")
 	heart.texture_progress = load("res://assets/hearts/heart" + effect + "Top.png")
+
+func visual_effect(effect_name : StringName):
+	match effect_name:
+		&"whatever_the_effect_name_is":
+			pass # do stuff
