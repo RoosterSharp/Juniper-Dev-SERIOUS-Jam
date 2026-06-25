@@ -89,7 +89,7 @@ func shoot():
 	bullet.fire()
 	set_chamber(selected_chamber, EMPTY)
 	
-	Character.get_instance().deplete_effects()
+	char_ref.deplete_effects()
 	
 	if heat <= max_heat - 20:
 		heat += bullet.heat
