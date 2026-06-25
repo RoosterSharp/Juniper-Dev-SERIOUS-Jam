@@ -3,6 +3,7 @@ extends Node
 
 signal chamber_updated(idx : int, new_value)
 signal emptied
+signal fired(bullet : Bullet)
 
 const HEAT_DROP_RATE = 10
 const EMPTY = preload("res://bullets/empty.tres")
@@ -87,6 +88,7 @@ func shoot():
 	
 	score += 1
 	bullet.fire()
+	fired.emit(bullet)
 	set_chamber(selected_chamber, EMPTY)
 	
 	char_ref.deplete_effects()
