@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://5nev65ygcq66"]
+[gd_scene load_steps=15 format=3 uid="uid://5nev65ygcq66"]
 
 [ext_resource type="Texture2D" uid="uid://daxq2pw8ooofd" path="res://assets/background.jpg" id="1_lbhrr"]
 [ext_resource type="Script" uid="uid://b8e0lof3gnqpv" path="res://scenes/character/cylinder.gd" id="2_lbhrr"]
@@ -7,7 +7,9 @@
 [ext_resource type="Resource" uid="uid://bwiarpt5nmh82" path="res://bullets/bullet_resources/basic.tres" id="4_dinhu"]
 [ext_resource type="PackedScene" uid="uid://c8xkn0uh03ynm" path="res://scenes/character/character.tscn" id="5_iywne"]
 [ext_resource type="Resource" uid="uid://c281ocxm28prj" path="res://bullets/bullet_resources/heal.tres" id="7_ir15t"]
+[ext_resource type="Texture2D" uid="uid://bcp04w4caj8qr" path="res://assets/powButton.png" id="9_dinhu"]
 [ext_resource type="Script" uid="uid://pnglifyfmafh" path="res://ui/shoot_time_bar.gd" id="10_dinhu"]
+[ext_resource type="Texture2D" uid="uid://b4f2rh86slr2g" path="res://assets/fillButton.png" id="10_kvuet"]
 [ext_resource type="PackedScene" uid="uid://tgr0h14qhgpf" path="res://ui/upgrade_window.tscn" id="11_kvpfn"]
 [ext_resource type="PackedScene" uid="uid://cvhaw71mx6a1b" path="res://scenes/gun/gun.tscn" id="14_trtic"]
 [ext_resource type="Script" uid="uid://c4mw1exbamn7x" path="res://ui/score_label.gd" id="15_ir15t"]
@@ -49,17 +51,21 @@ position = Vector2(5, 33)
 
 [node name="Button" type="Button" parent="."]
 offset_left = 114.0
-offset_top = 102.0
+offset_top = 110.0
 offset_right = 191.0
-offset_bottom = 133.0
-text = "shoot"
+offset_bottom = 141.0
+icon = ExtResource("9_dinhu")
+flat = true
+icon_alignment = 1
 
 [node name="Button2" type="Button" parent="."]
 offset_left = 114.0
 offset_top = 145.0
 offset_right = 191.0
 offset_bottom = 176.0
-text = "fill"
+icon = ExtResource("10_kvuet")
+flat = true
+icon_alignment = 1
 
 [node name="Gun" parent="." instance=ExtResource("14_trtic")]
 position = Vector2(127, 71)
