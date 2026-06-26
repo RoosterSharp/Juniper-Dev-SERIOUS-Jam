@@ -20,7 +20,7 @@ description = "Want to get big and strong??
 Stop shooting your heart doofus!!! 
 Or try these! 
 They block damage for the next two shots."
-heat = 10.0
+heat = 0
 weight = 0.1
 effects = Array[ExtResource("1_b80ao")]([SubResource("Resource_wdftd")])
 metadata/_custom_type_script = "uid://bswb22uloxwgq"

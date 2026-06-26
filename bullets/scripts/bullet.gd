@@ -10,7 +10,7 @@ static var _bullet_list = null
 @export var texture : Texture2D
 @export var display_name : String
 @export_multiline var description : String
-@export var heat := 5.0
+@export var heat := 5
 @export var weight := 1.0
 @export var effects : Array[BulletEffect]
 

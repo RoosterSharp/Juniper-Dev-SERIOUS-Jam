@@ -18,7 +18,7 @@ display_name = "Brrrrullet"
 description = "An ice cold bullet that gets even colder when fired! 
 This is generally not a good thing. 
 thticks to youw tongue wheh youu lrick it."
-heat = -50.0
+heat = -50
 weight = 0.2
 effects = Array[ExtResource("1_5l2mb")]([SubResource("Resource_r4al8")])
 metadata/_custom_type_script = "uid://bswb22uloxwgq"

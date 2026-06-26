@@ -11,7 +11,7 @@ texture = ExtResource("3_012s6")
 display_name = "Toy Dart"
 description = "Copywrite free and ready 
 to mingopywritefree."
-heat = 30.0
+heat = 30
 weight = 0.2
 effects = Array[ExtResource("1_vne4f")]([])
 metadata/_custom_type_script = "uid://bswb22uloxwgq"

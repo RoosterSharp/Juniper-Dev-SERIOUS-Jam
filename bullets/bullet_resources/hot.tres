@@ -19,7 +19,7 @@ description = "Take this hot shot
 It's filled with desire.
 Put it in it's slot,
 Then pull trigger for fire!"
-heat = 50.0
+heat = 50
 weight = 0.2
 effects = Array[ExtResource("1_0d0gq")]([SubResource("Resource_m04t0")])
 metadata/_custom_type_script = "uid://bswb22uloxwgq"
