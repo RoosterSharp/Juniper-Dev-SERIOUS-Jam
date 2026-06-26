@@ -7,4 +7,4 @@ extends BulletEffect
 @export var duration := 1
 
 func apply():
-	char_ref.add_effect(effect_name,duration)
+	Character.get_instance().add_effect(effect_name,duration)
