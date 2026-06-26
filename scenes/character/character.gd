@@ -12,7 +12,6 @@ var cyl_ref
 var effects = {}
 var dead = false
 @onready var dead_dialog = $DeadDialog
-@onready var upgrade_window = $UpgradeWindow
 
 
 func _init():

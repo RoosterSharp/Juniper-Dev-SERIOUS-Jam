@@ -16,7 +16,10 @@ script = ExtResource("2_6wdf1")
 type = &"guard"
 texture = ExtResource("4_htwe7")
 display_name = "Guarding Bullet"
-description = "Want to get big and strong?? Stop shooting your heart doofus!!! Or try these! They block damage for the next two shots."
+description = "Want to get big and strong?? 
+Stop shooting your heart doofus!!! 
+Or try these! 
+They block damage for the next two shots."
 heat = 10.0
 weight = 0.1
 effects = Array[ExtResource("1_b80ao")]([SubResource("Resource_wdftd")])

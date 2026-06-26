@@ -29,6 +29,9 @@ func fire():
 		await effect.apply()
 
 
+func get_description():
+	return "%s\nheat: %s" % [description,heat]
+
 static func rand_from(bullets):
 	var rng = RandomNumberGenerator.new()
 	var weights = []

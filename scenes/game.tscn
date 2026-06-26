@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://5nev65ygcq66"]
+[gd_scene load_steps=13 format=3 uid="uid://5nev65ygcq66"]
 
 [ext_resource type="Texture2D" uid="uid://daxq2pw8ooofd" path="res://assets/background.jpg" id="1_lbhrr"]
 [ext_resource type="Script" uid="uid://b8e0lof3gnqpv" path="res://scenes/character/cylinder.gd" id="2_lbhrr"]
@@ -8,6 +8,7 @@
 [ext_resource type="PackedScene" uid="uid://c8xkn0uh03ynm" path="res://scenes/character/character.tscn" id="5_iywne"]
 [ext_resource type="Resource" uid="uid://c281ocxm28prj" path="res://bullets/bullet_resources/heal.tres" id="7_ir15t"]
 [ext_resource type="Script" uid="uid://pnglifyfmafh" path="res://ui/shoot_time_bar.gd" id="10_dinhu"]
+[ext_resource type="PackedScene" uid="uid://tgr0h14qhgpf" path="res://ui/upgrade_window.tscn" id="11_kvpfn"]
 [ext_resource type="PackedScene" uid="uid://cvhaw71mx6a1b" path="res://scenes/gun/gun.tscn" id="14_trtic"]
 [ext_resource type="Script" uid="uid://c4mw1exbamn7x" path="res://ui/score_label.gd" id="15_ir15t"]
 
@@ -71,6 +72,9 @@ offset_bottom = 127.0
 theme_override_constants/outline_size = 2
 text = "Score: "
 script = ExtResource("15_ir15t")
+
+[node name="UpgradeWindow" parent="." instance=ExtResource("11_kvpfn")]
+visible = false
 
 [connection signal="timeout" from="BarrelManager/ShootTimer" to="BarrelManager" method="shoot_rand"]
 [connection signal="button_down" from="Button" to="BarrelManager" method="shoot"]

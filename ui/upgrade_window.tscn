@@ -1,38 +1,50 @@
-[gd_scene load_steps=2 format=3 uid="uid://tgr0h14qhgpf"]
+[gd_scene load_steps=4 format=3 uid="uid://tgr0h14qhgpf"]
 
 [ext_resource type="Script" uid="uid://da6thcfi3rmsh" path="res://ui/upgrade_window.gd" id="1_i4p6r"]
+[ext_resource type="Theme" uid="uid://cafe7ie2rxx8a" path="res://ui/main_theme.tres" id="2_8v7es"]
+[ext_resource type="PackedScene" uid="uid://b4oxrajr8cjj7" path="res://ui/upgrade_button.tscn" id="3_4ujsr"]
 
 [node name="UpgradeWindow" type="Window"]
 process_mode = 3
 auto_translate_mode = 1
+transparent_bg = true
 title = "Pick one!!!"
 initial_position = 1
-size = Vector2i(230, 100)
-visible = false
+size = Vector2i(280, 140)
+borderless = true
+transparent = true
 script = ExtResource("1_i4p6r")
 
-[node name="HBoxContainer" type="HBoxContainer" parent="."]
+[node name="Panel" type="MarginContainer" parent="."]
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 10
 
-[node name="Button1" type="Button" parent="HBoxContainer"]
+[node name="HBoxContainer" type="HBoxContainer" parent="Panel"]
 layout_mode = 2
-size_flags_horizontal = 3
-text = "1"
+theme = ExtResource("2_8v7es")
+theme_override_constants/separation = 10
 
-[node name="Button2" type="Button" parent="HBoxContainer"]
+[node name="Button1" parent="Panel/HBoxContainer" instance=ExtResource("3_4ujsr")]
 layout_mode = 2
-size_flags_horizontal = 3
-text = "2"
+focus_mode = 0
 
-[node name="Button3" type="Button" parent="HBoxContainer"]
+[node name="Button2" parent="Panel/HBoxContainer" instance=ExtResource("3_4ujsr")]
 layout_mode = 2
-size_flags_horizontal = 3
-text = "3"
+focus_mode = 0
+button_idx = 1
 
-[connection signal="button_down" from="HBoxContainer/Button1" to="." method="_on_button_1_button_down"]
-[connection signal="button_down" from="HBoxContainer/Button2" to="." method="_on_button_2_button_down"]
-[connection signal="button_down" from="HBoxContainer/Button3" to="." method="_on_button_3_button_down"]
+[node name="Button3" parent="Panel/HBoxContainer" instance=ExtResource("3_4ujsr")]
+layout_mode = 2
+focus_mode = 0
+button_idx = 2
+
+[connection signal="button_pressed_idx" from="Panel/HBoxContainer/Button1" to="." method="select"]
+[connection signal="button_pressed_idx" from="Panel/HBoxContainer/Button2" to="." method="select"]
+[connection signal="button_pressed_idx" from="Panel/HBoxContainer/Button3" to="." method="select"]

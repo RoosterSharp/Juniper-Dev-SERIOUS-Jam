@@ -15,7 +15,8 @@ script = ExtResource("2_d7o77")
 type = &"cold"
 texture = ExtResource("3_d7o77")
 display_name = "Brrrrullet"
-description = "An ice cold bullet that gets even colder when fired! This is generally not a good thing. 
+description = "An ice cold bullet that gets even colder when fired! 
+This is generally not a good thing. 
 thticks to youw tongue wheh youu lrick it."
 heat = -50.0
 weight = 0.2

@@ -23,7 +23,10 @@ script = ExtResource("4_cmrvk")
 type = &"hot_heal"
 texture = ExtResource("5_w8kxr")
 display_name = "Toasty Heal"
-description = "Getting hit with this feels somewhere between a warm bath and being shot."
+description = "Getting hit with this feels 
+somewhere between a 
+warm bath and being shot.
+Heals 20 but only if heat > 40."
 heat = 0.0
 weight = 0.1
 effects = Array[ExtResource("1_5shfb")]([SubResource("Resource_sc7ba")])

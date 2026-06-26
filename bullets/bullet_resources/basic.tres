@@ -15,7 +15,8 @@ script = ExtResource("3_d7qw4")
 type = &"normal"
 texture = ExtResource("4_c47f8")
 display_name = "Regular Bullet"
-description = "Your standard cowboy's bullet. Great for both rootin' and tootin'."
+description = "Your standard cowboy's bullet. 
+Great for rootin', and tootin', and shootin'."
 heat = 20.0
 weight = 1.0
 effects = Array[ExtResource("1_ne8dv")]([SubResource("Resource_m04t0")])

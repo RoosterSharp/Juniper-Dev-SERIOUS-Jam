@@ -1,0 +1,27 @@
+[gd_scene load_steps=4 format=3 uid="uid://b4oxrajr8cjj7"]
+
+[ext_resource type="Theme" uid="uid://cafe7ie2rxx8a" path="res://ui/main_theme.tres" id="1_qdyvx"]
+[ext_resource type="Script" uid="uid://sc7we2ww4p1t" path="res://ui/upgrade_button.gd" id="2_mfn4j"]
+[ext_resource type="PackedScene" uid="uid://4c2och0dgxib" path="res://ui/upgrade_effect.tscn" id="3_wdp5w"]
+
+[node name="Button1" type="Button"]
+offset_right = 64.0
+offset_bottom = 116.0
+size_flags_horizontal = 3
+theme = ExtResource("1_qdyvx")
+action_mode = 0
+script = ExtResource("2_mfn4j")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Benifit" parent="VBoxContainer" instance=ExtResource("3_wdp5w")]
+layout_mode = 2
+
+[node name="Drawback" parent="VBoxContainer" instance=ExtResource("3_wdp5w")]
+layout_mode = 2

@@ -1,0 +1,21 @@
+[gd_scene load_steps=4 format=3 uid="uid://4c2och0dgxib"]
+
+[ext_resource type="Theme" uid="uid://cafe7ie2rxx8a" path="res://ui/main_theme.tres" id="1_hfscq"]
+[ext_resource type="Script" uid="uid://bbxrehxsyfrgs" path="res://ui/upgrade_effect.gd" id="1_i2uls"]
+[ext_resource type="Texture2D" uid="uid://cxipa5lee5d66" path="res://assets/bullets/cold.png" id="2_hfscq"]
+
+[node name="VBoxContainer" type="VBoxContainer"]
+size_flags_vertical = 3
+theme = ExtResource("1_hfscq")
+script = ExtResource("1_i2uls")
+
+[node name="Icon" type="TextureRect" parent="."]
+layout_mode = 2
+texture = ExtResource("2_hfscq")
+stretch_mode = 3
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 2
+size_flags_vertical = 2
+text = "Test"
+horizontal_alignment = 1
