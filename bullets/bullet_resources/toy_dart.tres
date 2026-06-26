@@ -8,6 +8,8 @@
 script = ExtResource("2_6hd00")
 type = &"toy_dart"
 texture = ExtResource("3_012s6")
+display_name = "Toy Dart"
+description = "Copywrite free and ready to mingopywritefree."
 heat = 30.0
 weight = 0.2
 effects = Array[ExtResource("1_vne4f")]([])
