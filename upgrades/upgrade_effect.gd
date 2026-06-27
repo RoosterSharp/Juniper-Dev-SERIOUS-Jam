@@ -7,7 +7,7 @@ extends Resource
 ## Not really needed if its just a bullet
 @export var display_name : String
 ## Not really needed if its just a bullet
-@export var description : String
+@export_multiline var description : String
 
 ## only if this upgrade gives you a bullet
 @export var bullet : Bullet 
@@ -34,4 +34,7 @@ func apply():
 	if bullet:
 		Cylinder.get_instance().add_bullet(bullet)
 	else:
-		pass
+		match id:
+			"less_time":
+				var timer = Cylinder.get_instance().shoot_timer
+				timer.wait_time *= 0.9

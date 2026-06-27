@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="UpgradeEffect" load_steps=2 format=3 uid="uid://tg6a5ifqyptp"]
+
+[ext_resource type="Script" uid="uid://mxagqbufg7nd" path="res://upgrades/upgrade_effect.gd" id="1_m3frb"]
+
+[resource]
+script = ExtResource("1_m3frb")
+id = "less_time"
+display_name = "Less Shoot Time"
+description = "Shooting time is
+decreased by 10%"
+metadata/_custom_type_script = "uid://mxagqbufg7nd"

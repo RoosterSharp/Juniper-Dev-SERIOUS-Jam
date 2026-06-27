@@ -14,7 +14,7 @@ var benifits = [
 
 var drawbacks = [
 	preload("res://upgrades/drawbacks/cold.tres"),
-	preload("res://upgrades/drawbacks/cold.tres"),
+	preload("res://upgrades/drawbacks/less_time.tres"),
 ]
 
 func _ready():
@@ -38,7 +38,6 @@ func prompt_for_upgrade():
 	
 	show()
 	
-	#var locked_bullets = Bullet.get_bullet_list().filter(func(b): return !bullet_list.has(b))
 	var temp_benifits = benifits.duplicate()
 	var temp_drawbacks = drawbacks.duplicate()
 	for i in 2:

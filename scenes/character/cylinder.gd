@@ -73,7 +73,9 @@ func shoot_rand():
 	await tween.finished
 	cylinder_sprite.set_input_enabled(true)
 	DynamicCylinder.get_instance().selected_chamber = selected
+	BulletEffect.double = true
 	shoot()
+	BulletEffect.double = false
 
 
 func shoot():
