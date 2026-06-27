@@ -13,7 +13,7 @@ var button_idx := 0
 
 func _ready() -> void:
 	texture_button.button_down.connect(_button_down)
-	sprite_2d.texture = Bullet.EMPTY.texture
+	sprite_2d.texture = Bullet.get_empty().texture
 	Cylinder.get_instance().chamber_updated.connect(_chamber_updated)
 	texture_button.visible = false
 
@@ -26,7 +26,7 @@ func _chamber_updated(idx, bullet):
 		
 	if bullet:
 		sprite_2d.texture = bullet.texture
-		if show_tooltip && bullet != Bullet.EMPTY:
+		if show_tooltip && bullet != Bullet.get_empty():
 			texture_button.tooltip_text = bullet.get_description_with_title()+"\nNumber owned: %s" % str(Cylinder.get_instance().get_count_in_deck(bullet))
 			texture_button.visible = true
 		else:
@@ -35,4 +35,4 @@ func _chamber_updated(idx, bullet):
 	else:
 		sprite_2d.texture = null
 	
-	#texture_button.visible = bullet != Bullet.EMPTY
+	#texture_button.visible = bullet != Bullet.get_empty()

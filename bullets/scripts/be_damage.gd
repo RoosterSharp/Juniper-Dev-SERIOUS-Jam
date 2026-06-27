@@ -5,7 +5,7 @@ extends BulletEffect
 
 func apply():
 	if do_multiply:
-		Character.get_instance().damage(amount*int(multiplier))
+		Character.get_instance().damage(int(amount*multiplier))
 	else:
 		Character.get_instance().damage(amount)
 

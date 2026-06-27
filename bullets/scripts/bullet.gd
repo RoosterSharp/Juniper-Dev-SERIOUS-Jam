@@ -1,7 +1,6 @@
 extends Resource
 class_name Bullet
 
-const EMPTY = preload("res://bullets/empty.tres")
 const BULLET_PATH = "res://bullets/bullet_resources/"
 
 static var _bullet_list = null
@@ -48,3 +47,6 @@ static func rand_from(bullets):
 		weights.append(b.weight)
 	
 	return bullets[rng.rand_weighted(weights)]
+
+static func get_empty():
+	return load("res://bullets/empty.tres")

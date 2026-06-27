@@ -65,7 +65,7 @@ func shoot_rand():
 	shoot_timer.stop()
 	var options = []
 	for i in chambers_num:
-		if bullets[i] != Bullet.EMPTY:
+		if bullets[i] != Bullet.get_empty():
 			options.push_back(i)
 	
 	var selected = options.pick_random()
@@ -87,7 +87,7 @@ func shoot_rand():
 
 func shoot():
 	var selected_chamber = DynamicCylinder.get_instance().selected_chamber
-	if bullets[selected_chamber] == Bullet.EMPTY:
+	if bullets[selected_chamber] == Bullet.get_empty():
 		return
 	
 	shoot_timer.stop()
@@ -102,7 +102,7 @@ func shoot():
 	bullet.fire()
 	fired.emit(bullet)
 	discard.append(bullet)
-	set_chamber(selected_chamber, Bullet.EMPTY)
+	set_chamber(selected_chamber, Bullet.get_empty())
 	
 	char_ref.deplete_effects()
 	
@@ -127,22 +127,22 @@ func fill_cylinder(silent = false):
 	disp_heat()
 	var chambers = DynamicCylinder.get_instance().num_slots
 	for chamber in chambers:
-		if bullets[chamber] == Bullet.EMPTY:
+		if bullets[chamber] == Bullet.get_empty():
 			set_chamber(chamber, rand_bullet())
 	shoot_timer.start()
 
 
 func clear():
 	for i in chambers_num:
-		set_chamber(i,Bullet.EMPTY)
+		set_chamber(i,Bullet.get_empty())
 
 
 func is_empty() -> bool:
-	return bullets.all(func(b): return b == Bullet.EMPTY)
+	return bullets.all(func(b): return b == Bullet.get_empty())
 
 
 func is_full():
-	return bullets.all(func(b): return b != Bullet.EMPTY)
+	return bullets.all(func(b): return b != Bullet.get_empty())
 
 
 func refresh_chambers():
@@ -170,6 +170,7 @@ func reshuffle():
 
 
 func set_chamber(idx : int, bullet : Bullet):
+	print("chamber updated to "+ bullet.type)
 	bullets[idx] = bullet
 	chamber_updated.emit(idx, bullet)
 
@@ -180,7 +181,7 @@ func change_size(new_size: int):
 	bullets.resize(new_size)
 	for i in new_size:
 		if bullets[i] == null:
-			bullets[i] = Bullet.EMPTY
+			bullets[i] = Bullet.get_empty()
 
 
 func get_count_in_deck(bullet : Bullet):

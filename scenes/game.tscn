@@ -47,8 +47,10 @@ layer = 2
 [node name="BarrelManager" type="Node2D" parent="Cylinder"]
 position = Vector2(160.438, 89.6252)
 script = ExtResource("2_lbhrr")
+chambers_num = null
 heat_color_ramp = SubResource("Gradient_lbhrr")
 deck = Array[ExtResource("3_kvpfn")]([ExtResource("4_dinhu"), ExtResource("4_dinhu"), ExtResource("4_dinhu"), ExtResource("4_dinhu"), ExtResource("4_dinhu"), ExtResource("4_dinhu"), ExtResource("4_dinhu"), ExtResource("4_dinhu"), ExtResource("7_ir15t"), ExtResource("7_ir15t")])
+discard = null
 
 [node name="ShootTimer" type="Timer" parent="Cylinder/BarrelManager"]
 wait_time = 5.0
