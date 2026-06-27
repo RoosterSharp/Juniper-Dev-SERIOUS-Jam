@@ -32,6 +32,9 @@ func fire():
 func get_description():
 	return "%s\nheat: %s" % [description,heat]
 
+func get_description_with_title():
+	return display_name + "\n"+get_description()
+
 static func rand_from(bullets):
 	var rng = RandomNumberGenerator.new()
 	var weights = []

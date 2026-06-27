@@ -1,7 +1,8 @@
-[gd_scene load_steps=3 format=3 uid="uid://cy1i4k3h1wgm7"]
+[gd_scene load_steps=4 format=3 uid="uid://cy1i4k3h1wgm7"]
 
 [ext_resource type="Script" uid="uid://dk6gytqgb70ic" path="res://scenes/dynamic_cylinder/chamber_button.gd" id="1_lbqou"]
 [ext_resource type="BitMap" uid="uid://dlk1kauno8tg" path="res://assets/buttonBitmap.png" id="1_vkfxs"]
+[ext_resource type="Theme" uid="uid://cafe7ie2rxx8a" path="res://ui/main_theme.tres" id="2_t31sn"]
 
 [node name="SlotButton" type="Node2D"]
 script = ExtResource("1_lbqou")
@@ -15,6 +16,7 @@ offset_left = -12.0
 offset_top = -12.0
 offset_right = 12.0
 offset_bottom = 12.0
+theme = ExtResource("2_t31sn")
 texture_click_mask = ExtResource("1_vkfxs")
 
 [node name="Sprite2D" type="Sprite2D" parent="Node/Node2D"]

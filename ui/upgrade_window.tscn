@@ -1,21 +1,40 @@
-[gd_scene load_steps=4 format=3 uid="uid://tgr0h14qhgpf"]
+[gd_scene load_steps=6 format=3 uid="uid://tgr0h14qhgpf"]
 
 [ext_resource type="Script" uid="uid://da6thcfi3rmsh" path="res://ui/upgrade_window.gd" id="1_i4p6r"]
 [ext_resource type="Theme" uid="uid://cafe7ie2rxx8a" path="res://ui/main_theme.tres" id="2_8v7es"]
 [ext_resource type="PackedScene" uid="uid://b4oxrajr8cjj7" path="res://ui/upgrade_button.tscn" id="3_4ujsr"]
 
-[node name="UpgradeWindow" type="Window"]
+[sub_resource type="Gradient" id="Gradient_8v7es"]
+offsets = PackedFloat32Array(1)
+colors = PackedColorArray(0, 0, 0, 0.47451)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_4ujsr"]
+gradient = SubResource("Gradient_8v7es")
+
+[node name="UpgradeWindow" type="Control"]
 process_mode = 3
 auto_translate_mode = 1
-transparent_bg = true
-title = "Pick one!!!"
-initial_position = 1
-size = Vector2i(280, 140)
-borderless = true
-transparent = true
+layout_mode = 3
+anchors_preset = 0
+offset_right = 170.0
+offset_bottom = 144.0
 script = ExtResource("1_i4p6r")
 
+[node name="TextureRect" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -91.0
+offset_top = -86.0
+offset_right = 270.0
+offset_bottom = 164.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = SubResource("GradientTexture2D_4ujsr")
+
 [node name="Panel" type="MarginContainer" parent="."]
+layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -40,11 +59,5 @@ layout_mode = 2
 focus_mode = 0
 button_idx = 1
 
-[node name="Button3" parent="Panel/HBoxContainer" instance=ExtResource("3_4ujsr")]
-layout_mode = 2
-focus_mode = 0
-button_idx = 2
-
 [connection signal="button_pressed_idx" from="Panel/HBoxContainer/Button1" to="." method="select"]
 [connection signal="button_pressed_idx" from="Panel/HBoxContainer/Button2" to="." method="select"]
-[connection signal="button_pressed_idx" from="Panel/HBoxContainer/Button3" to="." method="select"]

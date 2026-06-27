@@ -6,7 +6,6 @@ signal emptied
 signal fired(bullet : Bullet)
 
 const HEAT_DROP_RATE = 10
-const EMPTY = preload("res://bullets/empty.tres")
 
 static var _node
 
@@ -45,7 +44,7 @@ func shoot_rand():
 	shoot_timer.stop()
 	var options = []
 	for i in chambers_num:
-		if bullets[i] != EMPTY:
+		if bullets[i] != Bullet.EMPTY:
 			options.push_back(i)
 	
 	var selected = options.pick_random()
@@ -89,7 +88,7 @@ func shoot():
 	score += 1
 	bullet.fire()
 	fired.emit(bullet)
-	set_chamber(selected_chamber, EMPTY)
+	set_chamber(selected_chamber, Bullet.EMPTY)
 	
 	char_ref.deplete_effects()
 	
@@ -108,13 +107,22 @@ func shoot():
 func fill_cylinder():
 	var chambers = DynamicCylinder.get_instance().num_slots
 	for chamber in chambers:
-		if bullets[chamber] == EMPTY:
+		if bullets[chamber] == Bullet.EMPTY:
 			set_chamber(chamber, rand_bullet())
 	shoot_timer.start()
 
 
+func clear():
+	for i in chambers_num:
+		set_chamber(i,Bullet.EMPTY)
+
 func is_empty() -> bool:
 	return bullets.all(func(b): return b == Bullet.EMPTY)
+
+
+func refresh_chambers():
+	for i in chambers_num:
+		chamber_updated.emit(i,bullets[i])
 
 
 func disp_heat():
@@ -139,7 +147,7 @@ func change_size(new_size: int):
 	bullets.resize(new_size)
 	for i in new_size:
 		if bullets[i] == null:
-			bullets[i] = EMPTY
+			bullets[i] = Bullet.EMPTY
 
 
 static func get_bullets() -> Array[Bullet]:

@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://5nev65ygcq66"]
+[gd_scene load_steps=16 format=3 uid="uid://5nev65ygcq66"]
 
 [ext_resource type="Texture2D" uid="uid://daxq2pw8ooofd" path="res://assets/background.jpg" id="1_lbhrr"]
 [ext_resource type="Script" uid="uid://b8e0lof3gnqpv" path="res://scenes/character/cylinder.gd" id="2_lbhrr"]
@@ -11,6 +11,7 @@
 [ext_resource type="Script" uid="uid://pnglifyfmafh" path="res://ui/shoot_time_bar.gd" id="10_dinhu"]
 [ext_resource type="Texture2D" uid="uid://b4f2rh86slr2g" path="res://assets/fillButton.png" id="10_kvuet"]
 [ext_resource type="PackedScene" uid="uid://tgr0h14qhgpf" path="res://ui/upgrade_window.tscn" id="11_kvpfn"]
+[ext_resource type="Theme" uid="uid://cafe7ie2rxx8a" path="res://ui/main_theme.tres" id="14_ir15t"]
 [ext_resource type="PackedScene" uid="uid://cvhaw71mx6a1b" path="res://scenes/gun/gun.tscn" id="14_trtic"]
 [ext_resource type="Script" uid="uid://c4mw1exbamn7x" path="res://ui/score_label.gd" id="15_ir15t"]
 
@@ -25,47 +26,50 @@ position = Vector2(155.438, 76.6252)
 scale = Vector2(0.299063, 0.299063)
 texture = ExtResource("1_lbhrr")
 
-[node name="BarrelManager" type="Node2D" parent="."]
+[node name="Cylinder" type="CanvasLayer" parent="."]
+layer = 2
+
+[node name="BarrelManager" type="Node2D" parent="Cylinder"]
 position = Vector2(160.438, 89.6252)
 script = ExtResource("2_lbhrr")
 heat_color_ramp = SubResource("Gradient_lbhrr")
 deck = Array[ExtResource("3_kvpfn")]([ExtResource("4_dinhu"), ExtResource("7_ir15t")])
 
-[node name="ShootTimer" type="Timer" parent="BarrelManager"]
+[node name="ShootTimer" type="Timer" parent="Cylinder/BarrelManager"]
 wait_time = 5.0
 one_shot = true
 autostart = true
 
-[node name="ProgressBar" type="ProgressBar" parent="BarrelManager/ShootTimer"]
+[node name="ProgressBar" type="ProgressBar" parent="Cylinder/BarrelManager/ShootTimer"]
 offset_left = 12.0
 offset_top = -3.0
 offset_right = 294.0
 offset_bottom = 24.0
 script = ExtResource("10_dinhu")
 
-[node name="HeightAlignedBarrel" parent="BarrelManager" instance=ExtResource("2_lnu2h")]
+[node name="HeightAlignedBarrel" parent="Cylinder/BarrelManager" instance=ExtResource("2_lnu2h")]
 position = Vector2(92.562, -9.6252)
 
 [node name="Character" parent="." instance=ExtResource("5_iywne")]
 position = Vector2(5, 33)
 
-[node name="Button" type="Button" parent="."]
+[node name="Button" type="TextureButton" parent="."]
 offset_left = 114.0
 offset_top = 110.0
-offset_right = 191.0
-offset_bottom = 141.0
-icon = ExtResource("9_dinhu")
-flat = true
-icon_alignment = 1
+offset_right = 197.0
+offset_bottom = 150.0
+focus_mode = 0
+texture_normal = ExtResource("9_dinhu")
+stretch_mode = 3
 
-[node name="Button2" type="Button" parent="."]
+[node name="Button2" type="TextureButton" parent="."]
 offset_left = 114.0
 offset_top = 145.0
-offset_right = 191.0
-offset_bottom = 176.0
-icon = ExtResource("10_kvuet")
-flat = true
-icon_alignment = 1
+offset_right = 197.0
+offset_bottom = 185.0
+focus_mode = 0
+texture_normal = ExtResource("10_kvuet")
+stretch_mode = 3
 
 [node name="Gun" parent="." instance=ExtResource("14_trtic")]
 position = Vector2(127, 71)
@@ -79,9 +83,26 @@ theme_override_constants/outline_size = 2
 text = "Score: "
 script = ExtResource("15_ir15t")
 
-[node name="UpgradeWindow" parent="." instance=ExtResource("11_kvpfn")]
-visible = false
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
 
-[connection signal="timeout" from="BarrelManager/ShootTimer" to="BarrelManager" method="shoot_rand"]
-[connection signal="button_down" from="Button" to="BarrelManager" method="shoot"]
-[connection signal="button_down" from="Button2" to="BarrelManager" method="fill_cylinder"]
+[node name="UpgradeWindow" parent="CanvasLayer" instance=ExtResource("11_kvpfn")]
+visible = false
+offset_left = 24.0
+offset_top = 14.0
+offset_right = 194.0
+offset_bottom = 158.0
+
+[node name="Label" type="Label" parent="CanvasLayer/UpgradeWindow"]
+layout_mode = 0
+offset_left = 193.0
+offset_top = 18.0
+offset_right = 264.0
+offset_bottom = 41.0
+theme = ExtResource("14_ir15t")
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_outline_size = 0
+text = "Current Deck"
+
+[connection signal="timeout" from="Cylinder/BarrelManager/ShootTimer" to="Cylinder/BarrelManager" method="shoot_rand"]
+[connection signal="button_down" from="Button" to="Cylinder/BarrelManager" method="shoot"]
+[connection signal="button_down" from="Button2" to="Cylinder/BarrelManager" method="fill_cylinder"]
