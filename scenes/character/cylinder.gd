@@ -22,6 +22,7 @@ var max_heat = 100.0
 var score := 0
 
 @onready var shoot_timer = $ShootTimer
+@onready var shoot_button: TextureButton = $"../../ShootButton"
 
 func _init() -> void:
 	_node = self
@@ -38,7 +39,6 @@ func _ready() -> void:
 func _process(delta: float) -> void:
 	heat = move_toward(heat, 0, delta*HEAT_DROP_RATE)
 	disp_heat()
-	print(deck)
 
 
 static func get_instance() -> Cylinder:
@@ -77,7 +77,6 @@ func shoot_rand():
 
 
 func shoot():
-	
 	var selected_chamber = DynamicCylinder.get_instance().selected_chamber
 	if bullets[selected_chamber] == Bullet.EMPTY:
 		return
@@ -107,6 +106,7 @@ func shoot():
 	
 	if is_empty():
 		change_size(chambers_num + 1)
+		shoot_button.button_pressed = false
 		emptied.emit()
 
 

@@ -31,12 +31,15 @@ func prompt_for_upgrade():
 		buttons[i].set_benifit(unlocks[i].display_name, unlocks[i].get_description(),unlocks[i].texture)
 
 
-
 func select(idx):
 	var cylinder = Cylinder.get_instance()
-	cylinder.deck.append(unlocks[idx])
+	cylinder.add_bullet(unlocks[idx])
+	
 	get_tree().paused = false
-	DynamicCylinder.get_instance().process_mode = Node.PROCESS_MODE_INHERIT
+	var dc = DynamicCylinder.get_instance()
+	dc.process_mode = Node.PROCESS_MODE_INHERIT
+	dc.rotation = 0
+	dc.selected_chamber = 0
 	ChamberButton.show_tooltip = false
 	cylinder.clear()
 	cylinder.fill_cylinder()
