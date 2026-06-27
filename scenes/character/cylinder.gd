@@ -92,6 +92,7 @@ func shoot():
 	if bullet == Bullet.EMPTY:
 		return
 	
+	char_ref.bullet_effect(bullet.type)
 	
 	bullet.fire()
 	fired.emit(bullet)
