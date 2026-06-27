@@ -1,12 +1,12 @@
 [gd_scene load_steps=8 format=3 uid="uid://c8xkn0uh03ynm"]
 
 [ext_resource type="Script" uid="uid://cf07r8puotw0u" path="res://scenes/character/character.gd" id="1_cuyo6"]
-[ext_resource type="Texture2D" uid="uid://b2l00711xvq5" path="res://assets/heartBottom.png" id="2_mutn8"]
-[ext_resource type="Texture2D" uid="uid://cspber2ws7euc" path="res://assets/heartTop.png" id="3_fgi2k"]
+[ext_resource type="Texture2D" uid="uid://dfdls4mcnpbyc" path="res://assets/hearts/normalHeartBottom.png" id="2_bix7t"]
+[ext_resource type="Texture2D" uid="uid://cmncgot2kegdo" path="res://assets/hearts/normalHeartTop.png" id="3_bblvu"]
 [ext_resource type="Theme" uid="uid://cafe7ie2rxx8a" path="res://ui/main_theme.tres" id="4_fgi2k"]
-[ext_resource type="Script" uid="uid://c6ua5cwdwibmu" path="res://scenes/character/health_label.gd" id="5_f8hpl"]
+[ext_resource type="Script" path="res://scenes/character/health_label.gd" id="5_f8hpl"]
 [ext_resource type="Script" uid="uid://c4mw1exbamn7x" path="res://ui/score_label.gd" id="6_7ex5l"]
-[ext_resource type="Script" uid="uid://bmh8ns4hyte5w" path="res://scenes/character/heat_label.gd" id="6_bix7t"]
+[ext_resource type="Script" path="res://scenes/character/heat_label.gd" id="6_bix7t"]
 
 [node name="Character" type="Node2D"]
 script = ExtResource("1_cuyo6")
@@ -16,8 +16,8 @@ offset_right = 40.0
 offset_bottom = 40.0
 value = 100.0
 fill_mode = 3
-texture_under = ExtResource("2_mutn8")
-texture_progress = ExtResource("3_fgi2k")
+texture_under = ExtResource("2_bix7t")
+texture_progress = ExtResource("3_bblvu")
 
 [node name="Label" type="Label" parent="."]
 offset_top = 67.0
