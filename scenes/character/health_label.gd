@@ -1,6 +1,6 @@
 extends Label
 
-func _process(delta: float) -> void:
+func _process(_delta: float) -> void:
 	var health = Character.get_instance().health
 	var max_health = Character.get_instance().max_health
 	
