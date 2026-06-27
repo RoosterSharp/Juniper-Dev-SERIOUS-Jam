@@ -26,6 +26,13 @@ position = Vector2(155.438, 76.6252)
 scale = Vector2(0.299063, 0.299063)
 texture = ExtResource("1_lbhrr")
 
+[node name="ProgressBar" type="ProgressBar" parent="."]
+offset_left = 12.0
+offset_top = -3.0
+offset_right = 294.0
+offset_bottom = 24.0
+script = ExtResource("10_dinhu")
+
 [node name="Cylinder" type="CanvasLayer" parent="."]
 layer = 2
 
@@ -33,19 +40,12 @@ layer = 2
 position = Vector2(160.438, 89.6252)
 script = ExtResource("2_lbhrr")
 heat_color_ramp = SubResource("Gradient_lbhrr")
-deck = Array[ExtResource("3_kvpfn")]([ExtResource("4_dinhu"), ExtResource("7_ir15t")])
+deck = Array[ExtResource("3_kvpfn")]([ExtResource("4_dinhu"), ExtResource("4_dinhu"), ExtResource("4_dinhu"), ExtResource("4_dinhu"), ExtResource("4_dinhu"), ExtResource("4_dinhu"), ExtResource("4_dinhu"), ExtResource("4_dinhu"), ExtResource("4_dinhu"), ExtResource("7_ir15t")])
 
 [node name="ShootTimer" type="Timer" parent="Cylinder/BarrelManager"]
 wait_time = 5.0
 one_shot = true
 autostart = true
-
-[node name="ProgressBar" type="ProgressBar" parent="Cylinder/BarrelManager/ShootTimer"]
-offset_left = 12.0
-offset_top = -3.0
-offset_right = 294.0
-offset_bottom = 24.0
-script = ExtResource("10_dinhu")
 
 [node name="HeightAlignedBarrel" parent="Cylinder/BarrelManager" instance=ExtResource("2_lnu2h")]
 position = Vector2(92.562, -9.6252)

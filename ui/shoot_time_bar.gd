@@ -1,5 +1,5 @@
 extends ProgressBar
 
 func _process(delta):
-	max_value = get_parent().wait_time
-	value = get_parent().time_left
+	max_value = Cylinder.get_instance().shoot_timer.wait_time
+	value = Cylinder.get_instance().shoot_timer.time_left

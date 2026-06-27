@@ -27,7 +27,7 @@ func _chamber_updated(idx, bullet):
 	if bullet:
 		sprite_2d.texture = bullet.texture
 		if show_tooltip && bullet != Bullet.EMPTY:
-			texture_button.tooltip_text = bullet.get_description_with_title()
+			texture_button.tooltip_text = bullet.get_description_with_title()+"\nNumber owned: %s" % str(Cylinder.get_instance().get_count_in_deck(bullet))
 			texture_button.visible = true
 		else:
 			texture_button.tooltip_text = ""

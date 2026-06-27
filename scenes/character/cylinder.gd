@@ -14,6 +14,8 @@ static var _node
 
 var char_ref
 @export var deck : Array[Bullet]
+@export var discard : Array[Bullet]
+var obtained_bullet_list : Array[Bullet]
 var bullets : Array[Bullet]
 var heat := 0.0
 var max_heat = 100.0
@@ -27,15 +29,27 @@ func _init() -> void:
 func _ready() -> void:
 	change_size(chambers_num)
 	char_ref = Character.get_instance()
+	
+	for b in deck:
+		add_bullet(b,false)
+	
+	deck.shuffle()
 
 func _process(delta: float) -> void:
 	heat = move_toward(heat, 0, delta*HEAT_DROP_RATE)
 	disp_heat()
+	print(deck)
 
 
 static func get_instance() -> Cylinder:
 	return _node
 
+
+func add_bullet(bullet : Bullet, add_to_discard = true):
+	if add_to_discard:
+		discard.append(bullet)
+	if !obtained_bullet_list.has(bullet):
+		obtained_bullet_list.append(bullet)
 
 func shoot_rand():
 	if is_empty():
@@ -70,15 +84,6 @@ func shoot():
 	
 	shoot_timer.stop()
 	Gun.get_instance().shoot()
-	#var i = selected_chamber
-	
-	#while bullets[i] == EMPTY:
-		#i += 1
-		#if i >= chambers_num:
-			#i = 0
-		#if i == selected_chamber:
-			#return
-	#selected_chamber = i
 	
 	var bullet = bullets[selected_chamber]
 	
@@ -88,6 +93,7 @@ func shoot():
 	score += 1
 	bullet.fire()
 	fired.emit(bullet)
+	discard.append(bullet)
 	set_chamber(selected_chamber, Bullet.EMPTY)
 	
 	char_ref.deplete_effects()
@@ -133,7 +139,15 @@ func disp_heat():
 
 
 func rand_bullet() -> Bullet:
-	return Bullet.rand_from(deck)
+	if deck.size() == 0:
+		reshuffle()
+	return deck.pop_back()
+
+
+func reshuffle():
+	deck.append_array(discard)
+	discard.clear()
+	deck.shuffle()
 
 
 func set_chamber(idx : int, bullet : Bullet):
@@ -148,6 +162,12 @@ func change_size(new_size: int):
 	for i in new_size:
 		if bullets[i] == null:
 			bullets[i] = Bullet.EMPTY
+
+
+func get_count_in_deck(bullet : Bullet):
+	var full_deck = deck.duplicate()
+	full_deck.append_array(discard)
+	return full_deck.count(bullet)
 
 
 static func get_bullets() -> Array[Bullet]:
