@@ -30,7 +30,12 @@ func fire():
 
 
 func get_description():
-	return "%s\nheat: %s" % [description,heat]
+	var desc = description
+	if heat != 0:
+		desc += "\nheat: %s"
+	for e in effects:
+		desc += "\n"+str(e)
+	return desc
 
 func get_description_with_title():
 	return display_name + "\n"+get_description()

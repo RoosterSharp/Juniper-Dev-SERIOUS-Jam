@@ -63,6 +63,7 @@ func damage(amt : int):
 		get_tree().paused = true
 		dead_dialog.show()
 		await dead_dialog.confirmed
+		BulletEffect.reset_multiplier()
 		get_tree().paused = false
 		get_tree().reload_current_scene()
 

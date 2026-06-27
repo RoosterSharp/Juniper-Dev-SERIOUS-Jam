@@ -4,7 +4,10 @@ extends BulletEffect
 @export var amount := 5
 
 func apply():
-	if double:
-		Character.get_instance().damage(amount*2)
+	if do_multiply:
+		Character.get_instance().damage(amount*multiplier)
 	else:
 		Character.get_instance().damage(amount)
+
+func _to_string() -> String:
+	return "deal %s damage" % amount

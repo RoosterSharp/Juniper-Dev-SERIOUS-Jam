@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="UpgradeEffect" load_steps=2 format=3 uid="uid://t72dhsfcmjun"]
+
+[ext_resource type="Script" uid="uid://mxagqbufg7nd" path="res://upgrades/upgrade_effect.gd" id="1_sxhhy"]
+
+[resource]
+script = ExtResource("1_sxhhy")
+id = "increase_multiplier"
+display_name = "+0.5 Random Multiplier"
+description = ""
+metadata/_custom_type_script = "uid://mxagqbufg7nd"

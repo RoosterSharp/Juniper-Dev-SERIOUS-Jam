@@ -15,6 +15,7 @@ var benifits = [
 var drawbacks = [
 	preload("res://upgrades/drawbacks/cold.tres"),
 	preload("res://upgrades/drawbacks/less_time.tres"),
+	preload("res://upgrades/drawbacks/multiplier.tres")
 ]
 
 func _ready():

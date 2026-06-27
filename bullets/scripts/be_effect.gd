@@ -7,7 +7,10 @@ extends BulletEffect
 @export var duration := 1
 
 func apply():
-	if double:
+	if do_multiply:
 		Character.get_instance().add_effect(effect_name,duration*2)
 	else:
 		Character.get_instance().add_effect(effect_name,duration)
+
+func _to_string() -> String:
+	return "apply the %s effect for %s shots" % [str(effect_name), str(duration)]

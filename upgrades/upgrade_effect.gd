@@ -28,6 +28,12 @@ func get_description():
 	if bullet:
 		return bullet.get_description()
 	else:
+		if "increase_multiplier":
+			return """
+					Increase the multiplier for
+					random shots from %s to %s
+					(multiplier used when you
+					run out of time)""" % [BulletEffect.multiplier,BulletEffect.multiplier+0.5]
 		return description
 
 func apply():
@@ -38,3 +44,5 @@ func apply():
 			"less_time":
 				var timer = Cylinder.get_instance().shoot_timer
 				timer.wait_time *= 0.9
+			"increase_multiplier":
+				BulletEffect.multiplier += 0.5

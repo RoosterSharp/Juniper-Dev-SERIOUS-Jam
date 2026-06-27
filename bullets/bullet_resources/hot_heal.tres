@@ -1,7 +1,8 @@
-[gd_resource type="Resource" script_class="Bullet" load_steps=8 format=3 uid="uid://b6rcqbk7k3wrs"]
+[gd_resource type="Resource" script_class="Bullet" load_steps=10 format=3 uid="uid://b6rcqbk7k3wrs"]
 
 [ext_resource type="Script" uid="uid://yvf416wo0lny" path="res://bullets/scripts/bullet_effect.gd" id="1_5shfb"]
 [ext_resource type="Script" uid="uid://djslaoa4apinu" path="res://bullets/scripts/be_heal.gd" id="2_4p1y8"]
+[ext_resource type="Script" uid="uid://bbvmh8bw6ixik" path="res://bullets/scripts/be_heat.gd" id="3_7jep3"]
 [ext_resource type="Script" uid="uid://bpwfkog33hlog" path="res://bullets/scripts/be_temp_condition.gd" id="3_ksbo5"]
 [ext_resource type="Script" uid="uid://bswb22uloxwgq" path="res://bullets/scripts/bullet.gd" id="4_cmrvk"]
 [ext_resource type="Texture2D" uid="uid://cry40cthvy61" path="res://assets/bullets/warmHeal.png" id="5_w8kxr"]
@@ -11,11 +12,16 @@ script = ExtResource("2_4p1y8")
 amount = 20
 metadata/_custom_type_script = "uid://djslaoa4apinu"
 
+[sub_resource type="Resource" id="Resource_ht7nx"]
+script = ExtResource("3_7jep3")
+amount = -40
+metadata/_custom_type_script = "uid://bbvmh8bw6ixik"
+
 [sub_resource type="Resource" id="Resource_sc7ba"]
 script = ExtResource("3_ksbo5")
 conditional_type = 0
 heat_level = 40
-effects = Array[ExtResource("1_5shfb")]([SubResource("Resource_jtg4t")])
+effects = Array[ExtResource("1_5shfb")]([SubResource("Resource_jtg4t"), SubResource("Resource_ht7nx")])
 metadata/_custom_type_script = "uid://bpwfkog33hlog"
 
 [resource]
@@ -25,9 +31,8 @@ texture = ExtResource("5_w8kxr")
 display_name = "Toasty Heal"
 description = "Getting hit with this feels 
 somewhere between a 
-warm bath and being shot.
-Heals 20 but only if heat > 40."
-heat = -40
+warm bath and being shot."
+heat = 0
 weight = 0.1
 effects = Array[ExtResource("1_5shfb")]([SubResource("Resource_sc7ba")])
 metadata/_custom_type_script = "uid://bswb22uloxwgq"

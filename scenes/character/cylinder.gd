@@ -35,6 +35,7 @@ func _ready() -> void:
 		add_bullet(b,false)
 	
 	deck.shuffle()
+	fill_cylinder()
 
 func _process(delta: float) -> void:
 	heat = move_toward(heat, 0, delta*HEAT_DROP_RATE)
@@ -73,9 +74,9 @@ func shoot_rand():
 	await tween.finished
 	cylinder_sprite.set_input_enabled(true)
 	DynamicCylinder.get_instance().selected_chamber = selected
-	BulletEffect.double = true
+	BulletEffect.do_multiply = true
 	shoot()
-	BulletEffect.double = false
+	BulletEffect.do_multiply = false
 
 
 func shoot():
@@ -91,7 +92,7 @@ func shoot():
 	if bullet == Bullet.EMPTY:
 		return
 	
-	score += 1
+	
 	bullet.fire()
 	fired.emit(bullet)
 	discard.append(bullet)
@@ -109,10 +110,14 @@ func shoot():
 	if is_empty():
 		change_size(chambers_num + 1)
 		shoot_button.button_pressed = false
+		score += 1
 		emptied.emit()
 
 
 func fill_cylinder():
+	if is_full():
+		return
+	
 	heat = 0
 	disp_heat()
 	var chambers = DynamicCylinder.get_instance().num_slots
@@ -129,6 +134,9 @@ func clear():
 func is_empty() -> bool:
 	return bullets.all(func(b): return b == Bullet.EMPTY)
 
+
+func is_full():
+	return bullets.all(func(b): return b != Bullet.EMPTY)
 
 func refresh_chambers():
 	for i in chambers_num:
