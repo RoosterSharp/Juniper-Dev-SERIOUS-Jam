@@ -76,9 +76,9 @@ func heal(amt : int):
 func disp_health():
 	heart.value = float(health)/float(max_health) * 100.0
 
-func bullet_effect(effect: String):
-	heart.texture_under = load("res://assets/hearts/heart" + effect + "Bottom.png")
-	heart.texture_progress = load("res://assets/hearts/heart" + effect + "Top.png")
+func bullet_effect(effect: StringName):
+	heart.texture_under = load("res://assets/hearts/" + effect + "HeartBottom.png")
+	heart.texture_progress = load("res://assets/hearts/" + effect + "HeartTop.png")
 
 func visual_effect(effect_name : StringName):
 	match effect_name:
