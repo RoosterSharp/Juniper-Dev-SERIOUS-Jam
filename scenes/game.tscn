@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=3 uid="uid://5nev65ygcq66"]
+[gd_scene load_steps=19 format=3 uid="uid://5nev65ygcq66"]
 
 [ext_resource type="Texture2D" uid="uid://daxq2pw8ooofd" path="res://assets/background.jpg" id="1_lbhrr"]
 [ext_resource type="Script" uid="uid://b8e0lof3gnqpv" path="res://scenes/character/cylinder.gd" id="2_lbhrr"]
@@ -10,7 +10,10 @@
 [ext_resource type="Texture2D" uid="uid://bcp04w4caj8qr" path="res://assets/powButton.png" id="9_dinhu"]
 [ext_resource type="Script" uid="uid://pnglifyfmafh" path="res://ui/shoot_time_bar.gd" id="10_dinhu"]
 [ext_resource type="Texture2D" uid="uid://b4f2rh86slr2g" path="res://assets/fillButton.png" id="10_kvuet"]
+[ext_resource type="Texture2D" uid="uid://befqj7s7cyxn1" path="res://assets/powButtonPressed.png" id="10_ssvqc"]
 [ext_resource type="PackedScene" uid="uid://tgr0h14qhgpf" path="res://ui/upgrade_window.tscn" id="11_kvpfn"]
+[ext_resource type="Texture2D" uid="uid://c6xmfflbl50jo" path="res://assets/fillButtonPressed.png" id="13_1kice"]
+[ext_resource type="Texture2D" uid="uid://ddc0yd1sqw7r6" path="res://assets/fillButtonHover.png" id="14_5newe"]
 [ext_resource type="Theme" uid="uid://cafe7ie2rxx8a" path="res://ui/main_theme.tres" id="14_ir15t"]
 [ext_resource type="PackedScene" uid="uid://cvhaw71mx6a1b" path="res://scenes/gun/gun.tscn" id="14_trtic"]
 [ext_resource type="Script" uid="uid://c4mw1exbamn7x" path="res://ui/score_label.gd" id="15_ir15t"]
@@ -62,7 +65,7 @@ offset_bottom = 131.0
 focus_mode = 0
 action_mode = 0
 texture_normal = ExtResource("9_dinhu")
-texture_pressed = ExtResource("10_kvuet")
+texture_pressed = ExtResource("10_ssvqc")
 stretch_mode = 3
 
 [node name="ReloadButton" type="TextureButton" parent="."]
@@ -73,6 +76,8 @@ offset_bottom = 173.0
 focus_mode = 0
 action_mode = 0
 texture_normal = ExtResource("10_kvuet")
+texture_pressed = ExtResource("13_1kice")
+texture_hover = ExtResource("14_5newe")
 stretch_mode = 3
 
 [node name="Gun" parent="." instance=ExtResource("14_trtic")]
