@@ -26,6 +26,7 @@ func _ready():
 
 func reset():
 	health = max_health
+	disp_health()
 
 func add_effect(effect_name : StringName, duration : int):
 	duration += 1 # adding 1 so that it lasts past this turn
