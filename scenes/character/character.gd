@@ -1,6 +1,9 @@
 extends Node2D
 class_name Character
 
+const DEAD_TEXT = """You LOSE!
+		Final Score: %s"""
+
 static var _node
 
 @onready var heart: TextureProgressBar = $Heart
@@ -12,6 +15,7 @@ var cyl_ref
 var effects = {}
 var dead = false
 @onready var dead_dialog = $DeadDialog
+@onready var heart_sprite_timer: Timer = $HeartSpriteTimer
 
 
 func _init():
@@ -61,6 +65,7 @@ func damage(amt : int):
 	if health == 0:
 		dead = true
 		get_tree().paused = true
+		dead_dialog.dialog_text = DEAD_TEXT % Cylinder.get_instance().score
 		dead_dialog.show()
 		await dead_dialog.confirmed
 		BulletEffect.reset_multiplier()
@@ -79,8 +84,12 @@ func disp_health():
 func bullet_effect(effect: StringName):
 	heart.texture_under = load("res://assets/hearts/" + effect + "HeartBottom.png")
 	heart.texture_progress = load("res://assets/hearts/" + effect + "HeartTop.png")
+	heart_sprite_timer.start()
 
 func visual_effect(effect_name : StringName):
 	match effect_name:
 		&"whatever_the_effect_name_is":
 			pass # do stuff
+
+func _reset_heart_sprite():
+	bullet_effect(&"normal")

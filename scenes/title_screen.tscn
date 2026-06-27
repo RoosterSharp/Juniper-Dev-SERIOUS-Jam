@@ -1,0 +1,45 @@
+[gd_scene load_steps=4 format=3 uid="uid://b4gjf2apocl8e"]
+
+[ext_resource type="Texture2D" uid="uid://dychprlfnvpwj" path="res://assets/pointBlankCover.jpg" id="1_fgkus"]
+[ext_resource type="Theme" uid="uid://cafe7ie2rxx8a" path="res://ui/main_theme.tres" id="1_s4lrb"]
+[ext_resource type="Script" uid="uid://b4a0iixydiutv" path="res://ui/start_button.gd" id="3_mgrm8"]
+
+[node name="TitleScreen" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("1_s4lrb")
+
+[node name="TextureRect" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("1_fgkus")
+expand_mode = 1
+
+[node name="Button" type="Button" parent="."]
+layout_mode = 0
+offset_left = 211.0
+offset_top = 83.0
+offset_right = 266.0
+offset_bottom = 108.0
+text = "START!!!"
+script = ExtResource("3_mgrm8")
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 0
+offset_left = 51.0
+offset_top = 59.0
+offset_right = 137.0
+offset_bottom = 74.0
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_offset_x = 1
+theme_override_constants/shadow_offset_y = 1
+theme_override_constants/shadow_outline_size = 0
+text = "POINT BLANK"

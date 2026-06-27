@@ -69,4 +69,8 @@ size = Vector2i(137, 100)
 borderless = true
 theme = ExtResource("4_fgi2k")
 ok_button_text = "Restart"
-dialog_text = "You LOSE!"
+
+[node name="HeartSpriteTimer" type="Timer" parent="."]
+one_shot = true
+
+[connection signal="timeout" from="HeartSpriteTimer" to="." method="_reset_heart_sprite"]
