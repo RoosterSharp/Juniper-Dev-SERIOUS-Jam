@@ -1,8 +1,10 @@
-[gd_scene load_steps=4 format=3 uid="uid://b4gjf2apocl8e"]
+[gd_scene load_steps=6 format=3 uid="uid://b4gjf2apocl8e"]
 
 [ext_resource type="Texture2D" uid="uid://dychprlfnvpwj" path="res://assets/pointBlankCover.jpg" id="1_fgkus"]
 [ext_resource type="Theme" uid="uid://cafe7ie2rxx8a" path="res://ui/main_theme.tres" id="1_s4lrb"]
 [ext_resource type="Script" uid="uid://b4a0iixydiutv" path="res://ui/start_button.gd" id="3_mgrm8"]
+[ext_resource type="AudioStream" uid="uid://b48bok4818ur" path="res://assets/sounds/office_loop.wav" id="4_mgrm8"]
+[ext_resource type="FontFile" uid="uid://b33pwxrf1jm5" path="res://ui/Dea's Pocket Watch.ttf" id="5_dc4i4"]
 
 [node name="TitleScreen" type="Control"]
 layout_mode = 3
@@ -32,6 +34,14 @@ offset_bottom = 108.0
 text = "START!!!"
 script = ExtResource("3_mgrm8")
 
+[node name="Button2" type="Button" parent="."]
+layout_mode = 0
+offset_left = 198.0
+offset_top = 121.0
+offset_right = 283.0
+offset_bottom = 146.0
+text = "HOW TO PLAY"
+
 [node name="Label" type="Label" parent="."]
 layout_mode = 0
 offset_left = 51.0
@@ -43,3 +53,59 @@ theme_override_constants/shadow_offset_x = 1
 theme_override_constants/shadow_offset_y = 1
 theme_override_constants/shadow_outline_size = 0
 text = "POINT BLANK"
+
+[node name="OfficeSounds" type="AudioStreamPlayer" parent="."]
+process_mode = 3
+stream = ExtResource("4_mgrm8")
+volume_db = -16.421
+autoplay = true
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="Control" type="Control" parent="CanvasLayer"]
+visible = false
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("1_s4lrb")
+
+[node name="Panel" type="Panel" parent="CanvasLayer/Control"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -134.0
+offset_top = -74.0
+offset_right = 134.0
+offset_bottom = 74.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="RichTextLabel" type="RichTextLabel" parent="CanvasLayer/Control/Panel"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/normal_font = ExtResource("5_dc4i4")
+text = "Use the mouse to rotate the cylinder so that the bullet you wish to fire is at the top. Balance regular bullet and healing shots (the green ones) to keep your heart alive. Take too long, and the gun will choose for you, dealing double effects. Empty all the chambers for an upgrade and extra chamber.
+Tips: 
+ - Damage is halved when heat > 50
+ - Reloading resets heat, so use sparingly!"
+
+[node name="Button" type="Button" parent="CanvasLayer/Control/Panel"]
+layout_mode = 0
+offset_left = 230.0
+offset_top = 111.0
+offset_right = 260.0
+offset_bottom = 136.0
+text = "OK!!!"
+
+[connection signal="button_down" from="Button2" to="CanvasLayer/Control" method="show"]
+[connection signal="button_down" from="CanvasLayer/Control/Panel/Button" to="CanvasLayer/Control" method="hide"]
