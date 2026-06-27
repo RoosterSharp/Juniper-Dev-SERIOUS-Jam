@@ -24,6 +24,10 @@ var score := 0
 @onready var shoot_timer = $ShootTimer
 @onready var shoot_button: TextureButton = $"../../ShootButton"
 
+@onready var shoot_sound: AudioStreamPlayer = $ShootSound
+@onready var reload_sound: AudioStreamPlayer = $ReloadSound
+
+
 func _init() -> void:
 	_node = self
 
@@ -35,7 +39,7 @@ func _ready() -> void:
 		add_bullet(b,false)
 	
 	deck.shuffle()
-	fill_cylinder()
+	fill_cylinder(true)
 
 func _process(delta: float) -> void:
 	heat = move_toward(heat, 0, delta*HEAT_DROP_RATE)
@@ -89,11 +93,10 @@ func shoot():
 	
 	var bullet = bullets[selected_chamber]
 	
-	if bullet == Bullet.EMPTY:
-		return
 	
 	char_ref.bullet_effect(bullet.type)
 	
+	shoot_sound.play()
 	bullet.fire()
 	fired.emit(bullet)
 	discard.append(bullet)
@@ -108,17 +111,19 @@ func shoot():
 	
 	shoot_timer.start()
 	
-	if is_empty():
+	if is_empty() && !Character.get_instance().dead:
 		change_size(chambers_num + 1)
 		shoot_button.button_pressed = false
 		score += 1
 		emptied.emit()
 
 
-func fill_cylinder():
+func fill_cylinder(silent = false):
 	if is_full():
 		return
 	
+	if !silent:
+		reload_sound.play()
 	heat = 0
 	disp_heat()
 	var chambers = DynamicCylinder.get_instance().num_slots

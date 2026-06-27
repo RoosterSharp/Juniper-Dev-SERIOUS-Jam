@@ -18,6 +18,8 @@ var drawbacks = [
 	preload("res://upgrades/drawbacks/multiplier.tres")
 ]
 
+@onready var upgrade_sound: AudioStreamPlayer = $UpgradeSound
+
 func _ready():
 	Cylinder.get_instance().emptied.connect(prompt_for_upgrade)
 
@@ -58,7 +60,7 @@ func select(idx):
 	var cylinder = Cylinder.get_instance()
 	curr_benifits[idx].apply()
 	curr_drawbacks[idx].apply()
-	
+	upgrade_sound.play()
 	get_tree().paused = false
 	var dc = DynamicCylinder.get_instance()
 	dc.process_mode = Node.PROCESS_MODE_INHERIT
@@ -66,5 +68,5 @@ func select(idx):
 	dc.selected_chamber = 0
 	ChamberButton.show_tooltip = false
 	cylinder.clear()
-	cylinder.fill_cylinder()
+	cylinder.fill_cylinder(true)
 	hide()

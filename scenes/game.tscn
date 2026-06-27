@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=3 uid="uid://5nev65ygcq66"]
+[gd_scene load_steps=22 format=3 uid="uid://5nev65ygcq66"]
 
 [ext_resource type="Texture2D" uid="uid://daxq2pw8ooofd" path="res://assets/background.jpg" id="1_lbhrr"]
 [ext_resource type="Script" uid="uid://b8e0lof3gnqpv" path="res://scenes/character/cylinder.gd" id="2_lbhrr"]
@@ -7,7 +7,9 @@
 [ext_resource type="Resource" uid="uid://bwiarpt5nmh82" path="res://bullets/bullet_resources/basic.tres" id="4_dinhu"]
 [ext_resource type="PackedScene" uid="uid://c8xkn0uh03ynm" path="res://scenes/character/character.tscn" id="5_iywne"]
 [ext_resource type="Resource" uid="uid://c281ocxm28prj" path="res://bullets/bullet_resources/heal.tres" id="7_ir15t"]
+[ext_resource type="AudioStream" uid="uid://cg66axpdkur5" path="res://assets/sounds/shoot.wav" id="9_264po"]
 [ext_resource type="Texture2D" uid="uid://bcp04w4caj8qr" path="res://assets/powButton.png" id="9_dinhu"]
+[ext_resource type="AudioStream" uid="uid://dmi8t3lowkh8s" path="res://assets/sounds/reload.wav" id="10_1kice"]
 [ext_resource type="Script" uid="uid://pnglifyfmafh" path="res://ui/shoot_time_bar.gd" id="10_dinhu"]
 [ext_resource type="Texture2D" uid="uid://b4f2rh86slr2g" path="res://assets/fillButton.png" id="10_kvuet"]
 [ext_resource type="Texture2D" uid="uid://befqj7s7cyxn1" path="res://assets/powButtonPressed.png" id="10_ssvqc"]
@@ -17,6 +19,7 @@
 [ext_resource type="Texture2D" uid="uid://ddc0yd1sqw7r6" path="res://assets/fillButtonHover.png" id="14_5newe"]
 [ext_resource type="Theme" uid="uid://cafe7ie2rxx8a" path="res://ui/main_theme.tres" id="14_ir15t"]
 [ext_resource type="PackedScene" uid="uid://cvhaw71mx6a1b" path="res://scenes/gun/gun.tscn" id="14_trtic"]
+[ext_resource type="AudioStream" uid="uid://b48bok4818ur" path="res://assets/sounds/office_loop.wav" id="20_1kice"]
 
 [sub_resource type="Gradient" id="Gradient_lbhrr"]
 offsets = PackedFloat32Array(0.271605, 0.5, 0.736559, 0.887097, 1)
@@ -54,6 +57,14 @@ autostart = true
 
 [node name="HeightAlignedBarrel" parent="Cylinder/BarrelManager" instance=ExtResource("2_lnu2h")]
 position = Vector2(92.562, -9.6252)
+
+[node name="ShootSound" type="AudioStreamPlayer" parent="Cylinder/BarrelManager"]
+process_mode = 3
+stream = ExtResource("9_264po")
+
+[node name="ReloadSound" type="AudioStreamPlayer" parent="Cylinder/BarrelManager"]
+process_mode = 3
+stream = ExtResource("10_1kice")
 
 [node name="Character" parent="." instance=ExtResource("5_iywne")]
 position = Vector2(5, 33)
@@ -105,6 +116,12 @@ theme = ExtResource("14_ir15t")
 theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
 theme_override_constants/shadow_outline_size = 0
 text = "Current Deck"
+
+[node name="OfficeSounds" type="AudioStreamPlayer" parent="."]
+process_mode = 3
+stream = ExtResource("20_1kice")
+volume_db = -16.421
+autoplay = true
 
 [connection signal="timeout" from="Cylinder/BarrelManager/ShootTimer" to="Cylinder/BarrelManager" method="shoot_rand"]
 [connection signal="button_down" from="ShootButton" to="Cylinder/BarrelManager" method="shoot"]

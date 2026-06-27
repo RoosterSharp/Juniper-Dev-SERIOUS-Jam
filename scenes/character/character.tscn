@@ -1,12 +1,13 @@
-[gd_scene load_steps=8 format=3 uid="uid://c8xkn0uh03ynm"]
+[gd_scene load_steps=9 format=3 uid="uid://c8xkn0uh03ynm"]
 
 [ext_resource type="Script" uid="uid://cf07r8puotw0u" path="res://scenes/character/character.gd" id="1_cuyo6"]
 [ext_resource type="Texture2D" uid="uid://dfdls4mcnpbyc" path="res://assets/hearts/normalHeartBottom.png" id="2_bix7t"]
 [ext_resource type="Texture2D" uid="uid://cmncgot2kegdo" path="res://assets/hearts/normalHeartTop.png" id="3_bblvu"]
 [ext_resource type="Theme" uid="uid://cafe7ie2rxx8a" path="res://ui/main_theme.tres" id="4_fgi2k"]
-[ext_resource type="Script" path="res://scenes/character/health_label.gd" id="5_f8hpl"]
+[ext_resource type="Script" uid="uid://c6ua5cwdwibmu" path="res://scenes/character/health_label.gd" id="5_f8hpl"]
 [ext_resource type="Script" uid="uid://c4mw1exbamn7x" path="res://ui/score_label.gd" id="6_7ex5l"]
-[ext_resource type="Script" path="res://scenes/character/heat_label.gd" id="6_bix7t"]
+[ext_resource type="Script" uid="uid://bmh8ns4hyte5w" path="res://scenes/character/heat_label.gd" id="6_bix7t"]
+[ext_resource type="AudioStream" uid="uid://b12xee3sdbjir" path="res://assets/sounds/dead.wav" id="8_bblvu"]
 
 [node name="Character" type="Node2D"]
 script = ExtResource("1_cuyo6")
@@ -72,5 +73,9 @@ ok_button_text = "Restart"
 
 [node name="HeartSpriteTimer" type="Timer" parent="."]
 one_shot = true
+
+[node name="DeadSound" type="AudioStreamPlayer" parent="."]
+process_mode = 3
+stream = ExtResource("8_bblvu")
 
 [connection signal="timeout" from="HeartSpriteTimer" to="." method="_reset_heart_sprite"]

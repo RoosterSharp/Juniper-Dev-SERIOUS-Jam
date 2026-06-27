@@ -1,8 +1,9 @@
-[gd_scene load_steps=6 format=3 uid="uid://tgr0h14qhgpf"]
+[gd_scene load_steps=7 format=3 uid="uid://tgr0h14qhgpf"]
 
 [ext_resource type="Script" uid="uid://da6thcfi3rmsh" path="res://ui/upgrade_window.gd" id="1_i4p6r"]
 [ext_resource type="Theme" uid="uid://cafe7ie2rxx8a" path="res://ui/main_theme.tres" id="2_8v7es"]
 [ext_resource type="PackedScene" uid="uid://b4oxrajr8cjj7" path="res://ui/upgrade_button.tscn" id="3_4ujsr"]
+[ext_resource type="AudioStream" uid="uid://frgrb1hembu7" path="res://assets/sounds/upgrade.wav" id="4_4ujsr"]
 
 [sub_resource type="Gradient" id="Gradient_8v7es"]
 offsets = PackedFloat32Array(1)
@@ -58,6 +59,10 @@ focus_mode = 0
 layout_mode = 2
 focus_mode = 0
 button_idx = 1
+
+[node name="UpgradeSound" type="AudioStreamPlayer" parent="."]
+process_mode = 3
+stream = ExtResource("4_4ujsr")
 
 [connection signal="button_pressed_idx" from="Panel/HBoxContainer/Button1" to="." method="select"]
 [connection signal="button_pressed_idx" from="Panel/HBoxContainer/Button2" to="." method="select"]

@@ -16,6 +16,7 @@ var effects = {}
 var dead = false
 @onready var dead_dialog = $DeadDialog
 @onready var heart_sprite_timer: Timer = $HeartSpriteTimer
+@onready var dead_sound: AudioStreamPlayer = $DeadSound
 
 
 func _init():
@@ -63,20 +64,23 @@ func damage(amt : int):
 	disp_health()
 	
 	if health == 0:
-		dead = true
-		get_tree().paused = true
-		dead_dialog.dialog_text = DEAD_TEXT % Cylinder.get_instance().score
-		dead_dialog.show()
-		await dead_dialog.confirmed
-		BulletEffect.reset_multiplier()
-		get_tree().paused = false
-		get_tree().reload_current_scene()
+		die()
 
 
 func heal(amt : int):
 	health = min(max_health, health+amt)
 	disp_health()
 
+func die():
+	dead_sound.play()
+	dead = true
+	get_tree().paused = true
+	dead_dialog.dialog_text = DEAD_TEXT % Cylinder.get_instance().score
+	dead_dialog.show()
+	await dead_dialog.confirmed
+	BulletEffect.reset_multiplier()
+	get_tree().paused = false
+	get_tree().reload_current_scene()
 
 func disp_health():
 	heart.value = float(health)/float(max_health) * 100.0
