@@ -28,9 +28,8 @@ func get_description():
 	if bullet:
 		return bullet.get_description()
 	else:
-		if "increase_multiplier":
-			return """
-					Increase the multiplier for
+		if id == "increase_multiplier":
+			return """Increase the multiplier for
 					random shots from %s to %s
 					(multiplier used when you
 					run out of time)""" % [BulletEffect.multiplier,BulletEffect.multiplier+0.5]
@@ -46,3 +45,5 @@ func apply():
 				timer.wait_time *= 0.9
 			"increase_multiplier":
 				BulletEffect.multiplier += 0.5
+			"max_health":
+				Character.get_instance().max_health += 4

@@ -31,6 +31,7 @@ var score := 0
 func _init() -> void:
 	_node = self
 
+
 func _ready() -> void:
 	change_size(chambers_num)
 	char_ref = Character.get_instance()
@@ -40,6 +41,7 @@ func _ready() -> void:
 	
 	deck.shuffle()
 	fill_cylinder(true)
+
 
 func _process(delta: float) -> void:
 	heat = move_toward(heat, 0, delta*HEAT_DROP_RATE)
@@ -134,12 +136,14 @@ func clear():
 	for i in chambers_num:
 		set_chamber(i,Bullet.EMPTY)
 
+
 func is_empty() -> bool:
 	return bullets.all(func(b): return b == Bullet.EMPTY)
 
 
 func is_full():
 	return bullets.all(func(b): return b != Bullet.EMPTY)
+
 
 func refresh_chambers():
 	for i in chambers_num:
@@ -148,7 +152,7 @@ func refresh_chambers():
 
 func disp_heat():
 	var cyl_image = DynamicCylinder.get_instance()
-	var heat_percentage = heat/100.0 #gets a percentage value of heat level
+	var heat_percentage = heat/100.0 # gets a percentage value of heat level
 	heat_percentage = clamp(heat_percentage,-100,100)
 	cyl_image.set_modulate(heat_color_ramp.sample(0.5+heat_percentage*0.5))
 

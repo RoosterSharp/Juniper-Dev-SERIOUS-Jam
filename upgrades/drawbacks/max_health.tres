@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="UpgradeEffect" load_steps=2 format=3 uid="uid://dxtakr357ymui"]
+
+[ext_resource type="Script" uid="uid://mxagqbufg7nd" path="res://upgrades/upgrade_effect.gd" id="1_w88hq"]
+
+[resource]
+script = ExtResource("1_w88hq")
+id = "max_health"
+display_name = "+4 Max Health"
+description = "increase max health by 4"
+metadata/_custom_type_script = "uid://mxagqbufg7nd"
