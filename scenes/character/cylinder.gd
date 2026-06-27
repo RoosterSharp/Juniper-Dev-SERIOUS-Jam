@@ -104,10 +104,7 @@ func shoot():
 	
 	char_ref.deplete_effects()
 	
-	if heat <= max_heat - 20:
-		heat += bullet.heat
-	else:
-		heat = 100.0
+	heat = min(100,heat+bullet.heat)
 	
 	shoot_timer.start()
 	

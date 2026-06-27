@@ -59,6 +59,10 @@ func deplete_effects():
 func damage(amt : int):
 	if has_effect(&"guard"):
 		return
+	
+	if Cylinder.get_instance().heat > 50:
+		amt = ceil(amt / 2.0)
+	
 	health = max(health - amt, 0)
 	
 	disp_health()
