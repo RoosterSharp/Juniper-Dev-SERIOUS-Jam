@@ -111,6 +111,8 @@ func shoot():
 
 
 func fill_cylinder():
+	heat = 0
+	disp_heat()
 	var chambers = DynamicCylinder.get_instance().num_slots
 	for chamber in chambers:
 		if bullets[chamber] == Bullet.EMPTY:

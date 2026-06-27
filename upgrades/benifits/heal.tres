@@ -1,0 +1,12 @@
+[gd_resource type="Resource" script_class="UpgradeEffect" load_steps=3 format=3 uid="uid://cu3skdeygxyni"]
+
+[ext_resource type="Script" uid="uid://mxagqbufg7nd" path="res://upgrades/upgrade_effect.gd" id="1_7lgw8"]
+[ext_resource type="Resource" uid="uid://c281ocxm28prj" path="res://bullets/bullet_resources/heal.tres" id="1_qehbi"]
+
+[resource]
+script = ExtResource("1_7lgw8")
+id = ""
+bullet = ExtResource("1_qehbi")
+display_name = ""
+description = ""
+metadata/_custom_type_script = "uid://mxagqbufg7nd"

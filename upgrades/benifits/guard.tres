@@ -1,0 +1,12 @@
+[gd_resource type="Resource" script_class="UpgradeEffect" load_steps=3 format=3 uid="uid://jh8veral4cvl"]
+
+[ext_resource type="Script" uid="uid://mxagqbufg7nd" path="res://upgrades/upgrade_effect.gd" id="1_sy71m"]
+[ext_resource type="Resource" uid="uid://ckcpm62hk4k6u" path="res://bullets/bullet_resources/guard.tres" id="1_w60xl"]
+
+[resource]
+script = ExtResource("1_sy71m")
+id = ""
+bullet = ExtResource("1_w60xl")
+display_name = ""
+description = ""
+metadata/_custom_type_script = "uid://mxagqbufg7nd"

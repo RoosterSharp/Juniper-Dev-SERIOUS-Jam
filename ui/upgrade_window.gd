@@ -1,7 +1,21 @@
 extends Control
 
 @onready var buttons : Array[Button] = [$Panel/HBoxContainer/Button1, $Panel/HBoxContainer/Button2]
-var unlocks = [null,null]
+var curr_benifits = [null,null]
+var curr_drawbacks = [null,null]
+
+var benifits = [
+	preload("res://upgrades/benifits/guard.tres"), 
+	preload("res://upgrades/benifits/heal.tres"), 
+	preload("res://upgrades/benifits/hot_heal.tres"), 
+	preload("res://upgrades/benifits/hot_shot.tres"), 
+	preload("res://upgrades/benifits/toy_dart.tres"),
+]
+
+var drawbacks = [
+	preload("res://upgrades/drawbacks/cold.tres"),
+	preload("res://upgrades/drawbacks/cold.tres"),
+]
 
 func _ready():
 	Cylinder.get_instance().emptied.connect(prompt_for_upgrade)
@@ -24,16 +38,26 @@ func prompt_for_upgrade():
 	
 	show()
 	
-	var locked_bullets = Bullet.get_bullet_list().filter(func(b): return !bullet_list.has(b))
-	for i in min(2,locked_bullets.size()):
-		unlocks[i] = locked_bullets.pick_random()
-		locked_bullets.erase(unlocks[i])
-		buttons[i].set_benifit(unlocks[i].display_name, unlocks[i].get_description(),unlocks[i].texture)
+	#var locked_bullets = Bullet.get_bullet_list().filter(func(b): return !bullet_list.has(b))
+	var temp_benifits = benifits.duplicate()
+	var temp_drawbacks = drawbacks.duplicate()
+	for i in 2:
+		var b = temp_benifits.pick_random()
+		temp_benifits.erase(b)
+		curr_benifits[i] = b
+		
+		var d = temp_drawbacks.pick_random()
+		temp_drawbacks.erase(d)
+		curr_drawbacks[i] = d
+		
+		buttons[i].set_benifit(b.get_title(), b.get_description(),b.get_texture())
+		buttons[i].set_drawback(d.get_title(), d.get_description(),d.get_texture())
 
 
 func select(idx):
 	var cylinder = Cylinder.get_instance()
-	cylinder.add_bullet(unlocks[idx])
+	curr_benifits[idx].apply()
+	curr_drawbacks[idx].apply()
 	
 	get_tree().paused = false
 	var dc = DynamicCylinder.get_instance()
@@ -44,4 +68,3 @@ func select(idx):
 	cylinder.clear()
 	cylinder.fill_cylinder()
 	hide()
-	

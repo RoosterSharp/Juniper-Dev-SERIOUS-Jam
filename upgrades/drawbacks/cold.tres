@@ -1,0 +1,12 @@
+[gd_resource type="Resource" script_class="UpgradeEffect" load_steps=3 format=3 uid="uid://cwu4387vvajig"]
+
+[ext_resource type="Resource" uid="uid://cij8ni53p8pl6" path="res://bullets/bullet_resources/cold.tres" id="1_6j0pt"]
+[ext_resource type="Script" uid="uid://mxagqbufg7nd" path="res://upgrades/upgrade_effect.gd" id="1_762sm"]
+
+[resource]
+script = ExtResource("1_762sm")
+id = ""
+display_name = ""
+description = ""
+bullet = ExtResource("1_6j0pt")
+metadata/_custom_type_script = "uid://mxagqbufg7nd"
