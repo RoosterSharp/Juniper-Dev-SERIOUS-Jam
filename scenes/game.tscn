@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=3 uid="uid://5nev65ygcq66"]
+[gd_scene load_steps=19 format=3 uid="uid://5nev65ygcq66"]
 
 [ext_resource type="Texture2D" uid="uid://daxq2pw8ooofd" path="res://assets/background.jpg" id="1_lbhrr"]
 [ext_resource type="Script" uid="uid://b8e0lof3gnqpv" path="res://scenes/character/cylinder.gd" id="2_lbhrr"]
@@ -17,7 +17,6 @@
 [ext_resource type="Texture2D" uid="uid://ddc0yd1sqw7r6" path="res://assets/fillButtonHover.png" id="14_5newe"]
 [ext_resource type="Theme" uid="uid://cafe7ie2rxx8a" path="res://ui/main_theme.tres" id="14_ir15t"]
 [ext_resource type="PackedScene" uid="uid://cvhaw71mx6a1b" path="res://scenes/gun/gun.tscn" id="14_trtic"]
-[ext_resource type="Script" uid="uid://c4mw1exbamn7x" path="res://ui/score_label.gd" id="15_ir15t"]
 
 [sub_resource type="Gradient" id="Gradient_lbhrr"]
 offsets = PackedFloat32Array(0.271605, 0.5, 0.736559, 0.887097, 1)
@@ -86,15 +85,6 @@ stretch_mode = 3
 
 [node name="Gun" parent="." instance=ExtResource("14_trtic")]
 position = Vector2(127, 71)
-
-[node name="Label" type="Label" parent="."]
-offset_left = 23.0
-offset_top = 104.0
-offset_right = 75.0
-offset_bottom = 127.0
-theme_override_constants/outline_size = 2
-text = "Score: "
-script = ExtResource("15_ir15t")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 

@@ -10,4 +10,4 @@ func apply():
 		Character.get_instance().damage(amount)
 
 func _to_string() -> String:
-	return "deal %s damage" % amount
+	return "Deal %s damage" % amount

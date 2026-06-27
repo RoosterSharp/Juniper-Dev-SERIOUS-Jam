@@ -32,7 +32,7 @@ func fire():
 func get_description():
 	var desc = description
 	if heat != 0:
-		desc += "\nheat: %s"
+		desc += "\nHeat: %s" % heat
 	for e in effects:
 		desc += "\n"+str(e)
 	return desc

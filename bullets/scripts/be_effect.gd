@@ -13,4 +13,4 @@ func apply():
 		Character.get_instance().add_effect(effect_name,duration)
 
 func _to_string() -> String:
-	return "apply the %s effect for %s shots" % [str(effect_name), str(duration)]
+	return "Apply the %s effect for %s shots" % [str(effect_name), str(duration)]

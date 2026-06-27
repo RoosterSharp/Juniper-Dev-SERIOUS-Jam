@@ -8,4 +8,4 @@ func apply():
 	Cylinder.get_instance().disp_heat()
 
 func _to_string() -> String:
-	return "heat " + (("+"+str(amount)) if amount >= 0 else str(amount))
+	return "Heat " + (("+"+str(amount)) if amount >= 0 else str(amount))
