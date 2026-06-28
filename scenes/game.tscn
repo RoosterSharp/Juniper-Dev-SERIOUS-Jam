@@ -125,6 +125,24 @@ stream = ExtResource("20_1kice")
 volume_db = -16.421
 autoplay = true
 
+[node name="CanvasLayer2" type="CanvasLayer" parent="."]
+layer = 5
+
+[node name="Label2" type="Label" parent="CanvasLayer2"]
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_top = -15.0
+offset_right = 100.0
+grow_vertical = 0
+theme = ExtResource("14_ir15t")
+theme_override_colors/font_color = Color(0.404511, 0.404511, 0.404511, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_offset_x = 1
+theme_override_constants/shadow_offset_y = 1
+theme_override_constants/shadow_outline_size = 0
+text = "Press [ESC] to quit"
+
 [connection signal="timeout" from="Cylinder/BarrelManager/ShootTimer" to="Cylinder/BarrelManager" method="shoot_rand"]
 [connection signal="button_down" from="ShootButton" to="Cylinder/BarrelManager" method="shoot"]
 [connection signal="button_down" from="ReloadButton" to="Cylinder/BarrelManager" method="fill_cylinder"]
